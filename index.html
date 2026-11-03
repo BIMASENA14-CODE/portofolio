@@ -428,6 +428,17 @@
     html[data-theme="dark"] .art-lilac { background: linear-gradient(135deg, #2b2468, #40297a); }
     html[data-theme="dark"] .art-peach { background: linear-gradient(135deg, #4a2340, #5a2f3a); }
     html[data-theme="dark"] .project-index, html[data-theme="dark"] .project-type { color: #d5d9f5; }
+  
+    /* Perbaikan mode gelap: panel yang memakai var(--ink) sebagai latar */
+    html[data-theme="dark"] .about-card.dark, html[data-theme="dark"] .skills-intro, html[data-theme="dark"] .contact-panel {
+      color: #eef0ff; background: linear-gradient(145deg, #1d2260 0%, #0c1030 60%, #123a52 100%); border: 1px solid #2d3670;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 24px 56px rgba(0,0,0,.35);
+    }
+    html[data-theme="dark"] .skills-intro h3, html[data-theme="dark"] .contact-panel h2 { color: #ffffff; }
+    html[data-theme="dark"] .skills-intro p, html[data-theme="dark"] .contact-copy p { color: #b9c1e6; }
+    html[data-theme="dark"] .about-point { background: #1b2250; border-color: #2d3670; }
+    html[data-theme="dark"] .about-point strong { color: #eef0ff; }
+    html[data-theme="dark"] .award-icon { color: #5eead4; background: #0c2423; }
   </style>
 </head>
 <body>
