@@ -469,6 +469,40 @@
     .profile-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
     .profile-tags span { padding: 6px 10px; border: 1px solid var(--line); border-radius: 99px; color: var(--ink-soft); background: var(--white); font-size: 10.5px; font-weight: 800; }
     @media (max-width: 520px) { .profile-strip { gap: 14px; padding: 12px; } .profile-photo { width: 104px; height: 130px; border-radius: 52px 52px 16px 16px; } .profile-photo img { border-radius: 49px 49px 13px 13px; } .profile-name { font-size: 24px; } }
+  
+    /* ===== Gerak & variasi warna ===== */
+    body::before { inset: -6%; animation: aurora 24s ease-in-out infinite alternate; }
+    @keyframes aurora { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(2.5%,-2%,0) scale(1.07); } }
+    .scroll-bar { position: fixed; z-index: 60; top: 0; left: 0; right: 0; height: 3px; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, #7c5cff, #2dd4bf, #f472b6); pointer-events: none; }
+    .profile-photo { animation: floaty 6s ease-in-out infinite; }
+    @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+    .marquee { overflow: hidden; margin: 8px 0 0; padding: 18px 0; border-block: 1px solid var(--line); -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); }
+    .marquee-track { display: flex; gap: 12px; width: max-content; animation: marq 42s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee span { display: inline-flex; align-items: center; gap: 9px; padding: 9px 16px; border: 1px solid var(--line); border-radius: 99px; color: var(--ink-soft); background: var(--white); font-size: 12px; font-weight: 800; white-space: nowrap; }
+    .marquee span::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c, #7c6cff); }
+    .marquee span:nth-child(5n+1) { --c: #7c6cff; } .marquee span:nth-child(5n+2) { --c: #2dd4bf; } .marquee span:nth-child(5n+3) { --c: #f472b6; } .marquee span:nth-child(5n+4) { --c: #fbbf24; } .marquee span:nth-child(5n) { --c: #38bdf8; }
+    @keyframes marq { to { transform: translateX(-50%); } }
+    .js-anim .reveal { opacity: 0; --ty: 28px; }
+    .js-anim .reveal.in { opacity: 1; --ty: 0px; }
+    .reveal { transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+    .project-card, .skill-group, .journey-card, .trust-item { transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px)); }
+    .project-card:hover { transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(calc(var(--ty,0px) - 5px)); }
+    .project-card { position: relative; will-change: transform; }
+    .project-card::before { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0; transition: opacity .3s ease; background: radial-gradient(340px circle at var(--mx,50%) var(--my,0%), color-mix(in srgb, var(--c, #7c6cff) 26%, transparent), transparent 65%); }
+    .project-card:hover::before { opacity: 1; }
+    .project-card:hover { border-color: var(--c, #7c6cff); box-shadow: 0 22px 50px color-mix(in srgb, var(--c, #7c6cff) 24%, transparent); }
+    .project-card:nth-child(6n+1) { --c: #7c6cff; } .project-card:nth-child(6n+2) { --c: #2dd4bf; } .project-card:nth-child(6n+3) { --c: #f472b6; }
+    .project-card:nth-child(6n+4) { --c: #fbbf24; } .project-card:nth-child(6n+5) { --c: #38bdf8; } .project-card:nth-child(6n) { --c: #34d399; }
+    .project-card .result-bar { background: var(--c, var(--blue)); }
+    .skill-group:nth-child(1) { --c: #7c6cff; } .skill-group:nth-child(2) { --c: #2dd4bf; } .skill-group:nth-child(3) { --c: #f472b6; } .skill-group:nth-child(4) { --c: #fbbf24; }
+    .skill-group h4 svg { color: var(--c, var(--blue)); }
+    .skill-group:hover { border-color: var(--c, var(--blue)); }
+    .trust-item:nth-child(1) { --c: #7c6cff; } .trust-item:nth-child(2) { --c: #f472b6; } .trust-item:nth-child(3) { --c: #2dd4bf; } .trust-item:nth-child(4) { --c: #fbbf24; }
+    .trust-item:hover { border-color: var(--c); }
+    .section-kicker { background: linear-gradient(90deg, #7c5cff, #2dd4bf, #f472b6); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: kick 6s linear infinite; }
+    @keyframes kick { to { background-position: 200% 0; } }
+    @media (prefers-reduced-motion: reduce) { body::before, .profile-photo, .marquee-track, .section-kicker { animation: none; } .reveal { transition: none; } }
   </style>
 </head>
 <body>
@@ -543,6 +577,7 @@
       </div>
     </section>
 
+    <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Python</span><span>R</span><span>SQL</span><span>Streamlit</span><span>DuckDB</span><span>Neo4j</span><span>SARIMAX</span><span>LSTM</span><span>SVM</span><span>TF-IDF</span><span>Logistic Regression</span><span>K-Means</span><span>PCA</span><span>Gravity Model</span><span>Time Series</span><span>Computer Vision</span><span>NLP</span><span>Dashboard</span><span>Python</span><span>R</span><span>SQL</span><span>Streamlit</span><span>DuckDB</span><span>Neo4j</span><span>SARIMAX</span><span>LSTM</span><span>SVM</span><span>TF-IDF</span><span>Logistic Regression</span><span>K-Means</span><span>PCA</span><span>Gravity Model</span><span>Time Series</span><span>Computer Vision</span><span>NLP</span><span>Dashboard</span></div></div>
     <section id="about">
       <div class="container">
         <div class="section-heading"><div><p class="section-kicker">01 / Tentang saya</p><h2>Perpaduan analisis,<br>logika, dan rasa ingin tahu.</h2></div><p class="section-description">Saya senang mencari pola di balik data, menguji pendekatan secara terukur, lalu menyajikan hasilnya agar lebih mudah dipahami dan digunakan untuk mengambil keputusan.</p></div>
@@ -952,6 +987,35 @@
       document.getElementById('year').textContent = new Date().getFullYear();
       updateScrollUI();
     })();
+  </script>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var bar = document.createElement('div'); bar.className = 'scroll-bar'; document.body.appendChild(bar);
+    function progress() { var h = root.scrollHeight - window.innerHeight; bar.style.transform = 'scaleX(' + (h > 0 ? window.scrollY / h : 0) + ')'; }
+    window.addEventListener('scroll', progress, { passive: true }); progress();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    root.classList.add('js-anim');
+    var targets = document.querySelectorAll('.section-heading, .project-card, .skill-group, .skills-intro, .journey-card, .about-card, .trust-item, .contact-panel, .profile-strip');
+    var seen = new IntersectionObserver(function (list) {
+      list.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target; el.classList.add('in'); seen.unobserve(el);
+        setTimeout(function () { el.style.transitionDelay = ''; }, 1100);
+      });
+    }, { threshold: 0.12 });
+    targets.forEach(function (el, i) { el.classList.add('reveal'); el.style.transitionDelay = ((i % 3) * 90) + 'ms'; seen.observe(el); });
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.querySelectorAll('.project-card').forEach(function (card) {
+        card.addEventListener('pointermove', function (e) {
+          var r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+          card.style.setProperty('--mx', (x * 100) + '%'); card.style.setProperty('--my', (y * 100) + '%');
+          card.style.setProperty('--ry', ((x - 0.5) * 7) + 'deg'); card.style.setProperty('--rx', ((0.5 - y) * 7) + 'deg');
+        });
+        card.addEventListener('pointerleave', function () { card.style.setProperty('--rx', '0deg'); card.style.setProperty('--ry', '0deg'); });
+      });
+    }
+  })();
   </script>
 </body>
 </html>
