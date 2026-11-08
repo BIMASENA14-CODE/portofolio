@@ -534,6 +534,22 @@
     .button, .nav-cta { transition: transform .2s ease, box-shadow .2s ease, filter .2s ease; }
     .button:hover, .nav-cta:hover { transform: translateY(-2px); filter: brightness(1.06); }
     @media (prefers-reduced-motion: reduce) { .sticker { animation: none; } .js-anim .skill-pill, .js-anim .project-card .tech { opacity: 1; transform: none; } }
+  
+    /* Catatan melayang pindah ke bawah kartu supaya IPK terlihat */
+    .visual-wrap { padding-bottom: 44px; }
+    .floating-note { right: 18px; bottom: -4px; }
+    @media (max-width: 520px) { .floating-note { right: 8px; } }
+
+    /* Saat kursor diarahkan: kotak berwarna lebih kontras, senada */
+    :root:root .project-card, :root:root .skill-group, :root:root .journey-card, :root:root .about-point, :root:root .trust-item { transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease, opacity .7s ease, transform .5s cubic-bezier(.2,.7,.2,1); }
+    :root:root .project-card:hover, :root:root .project-card:focus-within { background: color-mix(in srgb, var(--c, #7c6cff) 24%, var(--white)); border-color: var(--c, #7c6cff); }
+    :root:root .project-card:hover .tech, :root:root .project-card:hover .project-result { background: color-mix(in srgb, var(--c, #7c6cff) 30%, var(--white)); border-color: var(--c, #7c6cff); }
+    :root:root .project-card:hover h3 { color: color-mix(in srgb, var(--c, #7c6cff) 62%, var(--ink)); }
+    :root:root .skill-group:hover { background: color-mix(in srgb, var(--c, #7c6cff) 22%, var(--white)); border-color: var(--c, #7c6cff); box-shadow: 0 18px 40px color-mix(in srgb, var(--c, #7c6cff) 22%, transparent); }
+    :root:root .skill-group:hover .skill-pill:not(.highlight) { background: color-mix(in srgb, var(--c, #7c6cff) 32%, var(--white)); border-color: var(--c, #7c6cff); }
+    :root:root .journey-card:hover { background: color-mix(in srgb, var(--c) 18%, var(--white)); border-color: var(--c); box-shadow: 0 18px 40px color-mix(in srgb, var(--c) 20%, transparent); }
+    :root:root .about-point:hover { background: color-mix(in srgb, var(--c) 28%, var(--white)); border-color: var(--c); }
+    :root:root .trust-item:hover { background: color-mix(in srgb, var(--c) 24%, var(--white)); border-color: var(--c); box-shadow: 0 14px 32px color-mix(in srgb, var(--c) 22%, transparent); }
   </style>
 </head>
 <body>
@@ -545,9 +561,9 @@
       </a>
       <nav class="nav-links" id="site-nav" aria-label="Navigasi utama">
         <a href="#about">Tentang</a>
+        <a href="#journey">Perjalanan</a>
         <a href="#projects">Proyek</a>
         <a href="#skills">Keahlian</a>
-        <a href="#journey">Perjalanan</a>
         <a href="#contact">Kontak</a>
       </nav>
       <div class="nav-actions">
@@ -625,9 +641,32 @@
       </div>
     </section>
 
+    <section class="journey-section" id="journey">
+      <div class="container">
+        <div class="section-heading"><div><p class="section-kicker">02 / Pendidikan & pengalaman</p><h2>Terus belajar, sambil berkontribusi.</h2></div><p class="section-description">Pembelajaran akademik berjalan berdampingan dengan pengalaman organisasi, kepanitiaan, kompetisi, dan pengabdian masyarakat.</p></div>
+        <div class="journey-grid">
+          <article class="journey-card">
+            <div class="journey-card-header"><div><h3>Pendidikan</h3><p>Fondasi akademik dan pengembangan kompetensi.</p></div><span class="journey-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 10 5-10 5L2 8l10-5ZM6 10v6l6 3 6-3v-6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span></div>
+            <div class="timeline">
+              <div class="timeline-item"><h4>Universitas Negeri Surabaya</h4><span class="timeline-meta">Agustus 2024 – Sekarang · S1 Sains Data</span><p>IPK 3,61. Mata kuliah pendukung meliputi Machine Learning, Data Mining, Data Warehouse, Statistika, Big Data, Deep Learning, Calculus, dan Data Visualization.</p></div>
+              <div class="timeline-item"><h4>Accelerate Data Analyst & Business Intelligence</h4><span class="timeline-meta">Bootcamp · Batch 5</span><p>Belajar mengolah dan menganalisis data, menyajikannya lewat visualisasi, dan membangun dashboard business intelligence untuk kebutuhan bisnis.</p></div>
+            </div>
+            <div class="award-box"><span class="award-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 21h8m-4-4v4M7 4h10v5a5 5 0 0 1-10 0V4ZM7 6H4v2a4 4 0 0 0 4 4m9-6h3v2a4 4 0 0 1-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Juara 2 Kompetisi UI/UX DIMASTI tingkat nasional</strong><span>Diselenggarakan oleh FMIPA Universitas Nasional; merancang aplikasi interaktif dengan fokus pada pengalaman pengguna dan fungsionalitas.</span></div></div>
+          </article>
+          <article class="journey-card">
+            <div class="journey-card-header"><div><h3>Organisasi & kontribusi</h3><p>Kolaborasi, komunikasi, dan dampak sosial.</p></div><span class="journey-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m7-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7-7.5a4 4 0 0 1 0 7.8m6 9.7v-2a4 4 0 0 0-3-3.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+            <div class="timeline">
+              <div class="timeline-item"><h4>Organisasi Pusat Penguatan Karakter</h4><span class="timeline-meta">Koordinator Divisi Kewirausahaan</span><p>Mengelola program kewirausahaan mahasiswa dan mendukung webinar nasionalisme, kegiatan sosial, personal branding, serta partisipasi PMW dan kompetisi nasional.</p></div>
+              <div class="timeline-item"><h4>Pekan Raya Mahasiswa</h4><span class="timeline-meta">Panitia · Media & Public Relations</span><p>Menangani peliputan, dokumentasi, perizinan, dan koordinasi eksternal pada rangkaian acara yang diikuti lebih dari 10.000 mahasiswa.</p></div>
+              <div class="timeline-item"><h4>Pengabdian Masyarakat FUN – FMIPA UNESA</h4><span class="timeline-meta">Juni – Juli 2026 · Desa Sambeng, Lamongan</span><p>Program lintas bidang selama 7 hari: sosialisasi UMKM, pengelolaan sampah, dan peternakan; mengajar siswa SD, menyusun modul ajar, serta kegiatan sosial bersama warga.</p></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
     <section class="projects-section" id="projects">
       <div class="container">
-        <div class="section-heading"><div><p class="section-kicker">02 / Proyek pilihan</p><h2>Eksperimen yang menjadi solusi.</h2></div><p class="section-description">Beberapa proyek yang mengeksplorasi forecasting, computer vision, NLP, dan segmentasi—dengan fokus pada proses analisis serta evaluasi hasil.</p></div>
+        <div class="section-heading"><div><p class="section-kicker">03 / Proyek pilihan</p><h2>Eksperimen yang menjadi solusi.</h2></div><p class="section-description">Beberapa proyek yang mengeksplorasi forecasting, computer vision, NLP, dan segmentasi—dengan fokus pada proses analisis serta evaluasi hasil.</p></div>
         <div class="filters" role="group" aria-label="Filter kategori proyek">
           <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">Semua proyek</button>
           <button class="filter-btn" type="button" data-filter="forecasting" aria-pressed="false">Forecasting</button>
@@ -694,7 +733,7 @@
 
     <section id="skills">
       <div class="container">
-        <div class="section-heading"><div><p class="section-kicker">03 / Keahlian</p><h2>Toolkit untuk mengolah data.</h2></div><p class="section-description">Kombinasi pemrograman, statistika, machine learning, dan komunikasi membantu saya mengerjakan proses analisis dari eksplorasi hingga penyajian hasil.</p></div>
+        <div class="section-heading"><div><p class="section-kicker">04 / Keahlian</p><h2>Toolkit untuk mengolah data.</h2></div><p class="section-description">Kombinasi pemrograman, statistika, machine learning, dan komunikasi membantu saya mengerjakan proses analisis dari eksplorasi hingga penyajian hasil.</p></div>
         <div class="skills-grid">
           <article class="skills-intro"><div class="mini-label"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Skill stack</div><h3>Teknis, analitis, dan komunikatif.</h3><p>Fokus saya adalah menghubungkan pemodelan dengan kebutuhan analisis, lalu menyampaikan temuan lewat visualisasi yang mudah dimengerti.</p><div class="skills-callout"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> Fokus: Data Analytics & Machine Learning</div></article>
           <div class="skill-groups">
@@ -707,28 +746,7 @@
       </div>
     </section>
 
-    <section class="journey-section" id="journey">
-      <div class="container">
-        <div class="section-heading"><div><p class="section-kicker">04 / Pendidikan & pengalaman</p><h2>Terus belajar, sambil berkontribusi.</h2></div><p class="section-description">Pembelajaran akademik berjalan berdampingan dengan pengalaman organisasi, kepanitiaan, kompetisi, dan pengabdian masyarakat.</p></div>
-        <div class="journey-grid">
-          <article class="journey-card">
-            <div class="journey-card-header"><div><h3>Pendidikan</h3><p>Fondasi akademik dan pengembangan kompetensi.</p></div><span class="journey-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 10 5-10 5L2 8l10-5ZM6 10v6l6 3 6-3v-6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span></div>
-            <div class="timeline">
-              <div class="timeline-item"><h4>Universitas Negeri Surabaya</h4><span class="timeline-meta">Agustus 2024 – Sekarang · S1 Sains Data</span><p>IPK 3,61. Mata kuliah pendukung meliputi Machine Learning, Data Mining, Data Warehouse, Statistika, Big Data, Deep Learning, Calculus, dan Data Visualization.</p></div>
-            </div>
-            <div class="award-box"><span class="award-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 21h8m-4-4v4M7 4h10v5a5 5 0 0 1-10 0V4ZM7 6H4v2a4 4 0 0 0 4 4m9-6h3v2a4 4 0 0 1-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Juara 2 Kompetisi UI/UX DIMASTI tingkat nasional</strong><span>Diselenggarakan oleh FMIPA Universitas Nasional; merancang aplikasi interaktif dengan fokus pada pengalaman pengguna dan fungsionalitas.</span></div></div>
-          </article>
-          <article class="journey-card">
-            <div class="journey-card-header"><div><h3>Organisasi & kontribusi</h3><p>Kolaborasi, komunikasi, dan dampak sosial.</p></div><span class="journey-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m7-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7-7.5a4 4 0 0 1 0 7.8m6 9.7v-2a4 4 0 0 0-3-3.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-            <div class="timeline">
-              <div class="timeline-item"><h4>Organisasi Pusat Penguatan Karakter</h4><span class="timeline-meta">Koordinator Divisi Kewirausahaan</span><p>Mengelola program kewirausahaan mahasiswa dan mendukung webinar nasionalisme, kegiatan sosial, personal branding, serta partisipasi PMW dan kompetisi nasional.</p></div>
-              <div class="timeline-item"><h4>Pekan Raya Mahasiswa</h4><span class="timeline-meta">Panitia · Media & Public Relations</span><p>Menangani peliputan, dokumentasi, perizinan, dan koordinasi eksternal pada rangkaian acara yang diikuti lebih dari 10.000 mahasiswa.</p></div>
-              <div class="timeline-item"><h4>Pengabdian Masyarakat FUN – FMIPA UNESA</h4><span class="timeline-meta">Juni – Juli 2026 · Desa Sambeng, Lamongan</span><p>Program lintas bidang selama 7 hari: sosialisasi UMKM, pengelolaan sampah, dan peternakan; mengajar siswa SD, menyusun modul ajar, serta kegiatan sosial bersama warga.</p></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+    
 
     <section class="contact-section" id="contact">
       <div class="container">
