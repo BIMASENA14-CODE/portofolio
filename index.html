@@ -456,6 +456,19 @@
     html[data-theme="dark"] .project-live { color: #06121f; background: linear-gradient(135deg, #5eead4, #67e8f9); }
     html[data-theme="dark"] .project-live:hover { color: #06121f; }
     @media (prefers-reduced-motion: reduce) { .live-badge::before, .art-shot img { animation: none; transition: none; } }
+  
+    /* Kartu profil dengan foto */
+    .profile-strip { position: relative; display: flex; align-items: center; gap: 22px; margin-bottom: 16px; padding: 16px 22px 16px 16px; border: 1px solid rgba(110,100,210,.22); border-radius: 28px; background: rgba(255,255,255,.62); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: var(--shadow); }
+    html[data-theme="dark"] .profile-strip { background: rgba(255,255,255,.04); border-color: var(--line); }
+    .profile-photo { flex: 0 0 auto; width: 132px; height: 165px; padding: 3px; border-radius: 66px 66px 20px 20px; background: linear-gradient(160deg, #7c5cff, #2dd4bf); }
+    .profile-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; border-radius: 63px 63px 17px 17px; }
+    .profile-info { min-width: 0; }
+    .profile-kicker { display: block; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .profile-name { display: block; margin-top: 4px; font-size: 30px; line-height: 1.05; letter-spacing: -.045em; }
+    .profile-role { display: block; margin-top: 6px; color: var(--blue); font-size: 13px; font-weight: 800; }
+    .profile-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+    .profile-tags span { padding: 6px 10px; border: 1px solid var(--line); border-radius: 99px; color: var(--ink-soft); background: var(--white); font-size: 10.5px; font-weight: 800; }
+    @media (max-width: 520px) { .profile-strip { gap: 14px; padding: 12px; } .profile-photo { width: 104px; height: 130px; border-radius: 52px 52px 16px 16px; } .profile-photo img { border-radius: 49px 49px 13px 13px; } .profile-name { font-size: 24px; } }
   </style>
 </head>
 <body>
@@ -495,6 +508,10 @@
             <div class="hero-location"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg> Surabaya, Indonesia <span aria-hidden="true">·</span> S1 Sains Data, semester 5</div>
           </div>
           <div class="visual-wrap fade-up" style="animation-delay:.1s">
+            <div class="profile-strip">
+              <div class="profile-photo"><img src="assets/foto-bima.webp" alt="Foto Bima Sena" width="760" height="950" fetchpriority="high"></div>
+              <div class="profile-info"><span class="profile-kicker">Hai, saya</span><strong class="profile-name">Bima Sena</strong><span class="profile-role">Data Science · UNESA</span><div class="profile-tags"><span>S1 Sains Data</span><span>Juara 2 UI/UX</span><span>Surabaya</span></div></div>
+            </div>
             <div class="visual-card">
               <div class="visual-top"><span class="visual-label">Data in motion</span><span class="live-pill"><span></span> Explore · Analyze · Build</span></div>
               <div class="visual-title">Data bukan sekadar angka. <span>Temukan ceritanya.</span></div>
