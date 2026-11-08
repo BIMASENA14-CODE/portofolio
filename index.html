@@ -503,6 +503,37 @@
     .section-kicker { background: linear-gradient(90deg, #7c5cff, #2dd4bf, #f472b6); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: kick 6s linear infinite; }
     @keyframes kick { to { background-position: 200% 0; } }
     @media (prefers-reduced-motion: reduce) { body::before, .profile-photo, .marquee-track, .section-kicker { animation: none; } .reveal { transition: none; } }
+  
+    /* ===== Kotak berwarna, gerak di semua bagian, sentuhan manusiawi ===== */
+    :root:root .about-point:nth-child(odd) { --c: #7c6cff; } :root:root .about-point:nth-child(even) { --c: #2dd4bf; }
+    :root:root .about-point { background: color-mix(in srgb, var(--c) 14%, var(--white)); border: 1px solid color-mix(in srgb, var(--c) 38%, transparent); border-left: 4px solid var(--c); }
+    :root:root .trust-item { background: color-mix(in srgb, var(--c) 11%, var(--white)); border-color: color-mix(in srgb, var(--c) 34%, transparent); }
+    :root:root .trust-item .trust-icon { color: var(--c); background: color-mix(in srgb, var(--c) 22%, var(--white)); }
+    :root:root .skill-group { background: color-mix(in srgb, var(--c, #7c6cff) 9%, var(--white)); border-color: color-mix(in srgb, var(--c, #7c6cff) 30%, transparent); border-top: 4px solid var(--c, #7c6cff); }
+    :root:root .skill-pill:not(.highlight) { background: color-mix(in srgb, var(--c, #7c6cff) 15%, var(--white)); border-color: color-mix(in srgb, var(--c, #7c6cff) 42%, transparent); }
+    :root:root .journey-card:nth-child(odd) { --c: #7c6cff; } :root:root .journey-card:nth-child(even) { --c: #2dd4bf; }
+    :root:root .journey-card { background: color-mix(in srgb, var(--c) 8%, var(--white)); border-color: color-mix(in srgb, var(--c) 28%, transparent); border-top: 4px solid var(--c); }
+    :root:root .award-box { background: color-mix(in srgb, #fbbf24 16%, var(--white)); border-color: color-mix(in srgb, #fbbf24 55%, transparent); }
+    :root:root .award-box span { color: var(--ink-soft); }
+    :root:root .award-icon { color: #b45309; background: color-mix(in srgb, #fbbf24 35%, var(--white)); }
+    :root:root .about-card.about-detail { border-top: 4px solid #2dd4bf; }
+    :root:root .about-card.dark { box-shadow: 0 24px 60px rgba(124,92,255,.28); }
+    :root:root .project-card .tech, :root:root .project-card .project-result { background: color-mix(in srgb, var(--c, #7c6cff) 11%, var(--white)); border-color: color-mix(in srgb, var(--c, #7c6cff) 32%, transparent); color: var(--ink-soft); }
+    :root:root .project-number { color: var(--c, #7c6cff); background: color-mix(in srgb, var(--c, #7c6cff) 18%, var(--white)); border: 0; }
+    .contact-link:nth-child(1) { --c: #7c6cff; } .contact-link:nth-child(2) { --c: #f472b6; } .contact-link:nth-child(3) { --c: #2dd4bf; }
+    :root:root .contact-link { border-left: 4px solid var(--c); }
+    :root:root .contact-icon { color: var(--c); background: color-mix(in srgb, var(--c) 24%, transparent); }
+    .sticker { position: absolute; z-index: 3; top: -12px; right: 18px; padding: 7px 12px; border-radius: 9px; color: #3b2a00; background: #fbbf24; font-size: 11px; font-weight: 850; transform: rotate(5deg); box-shadow: 0 8px 18px rgba(251,191,36,.35); animation: wiggle 4.5s ease-in-out infinite; }
+    @keyframes wiggle { 0%,100% { transform: rotate(5deg); } 50% { transform: rotate(-3deg) translateY(-2px); } }
+    .section-heading h2::after { content: ""; display: block; width: 72px; height: 4px; margin-top: 16px; border-radius: 4px; background: linear-gradient(90deg, #7c5cff, #2dd4bf, #f472b6); transition: width .9s cubic-bezier(.2,.7,.2,1) .3s; }
+    .js-anim .section-heading:not(.in) h2::after { width: 0; }
+    .js-anim .reveal:not(.project-card):not(.skill-group):not(.journey-card):not(.trust-item) { transform: translateY(var(--ty, 0px)); }
+    .js-anim .skill-pill, .js-anim .project-card .tech { opacity: 0; transform: scale(.8); }
+    .js-anim .skill-group.in .skill-pill, .js-anim .project-card.in .tech { opacity: 1; transform: none; transition: opacity .45s ease, transform .5s cubic-bezier(.2,.8,.3,1.4); transition-delay: calc(var(--i, 0) * 55ms + 260ms); }
+    .js-anim .contact-link.reveal:not(.in) { transform: translateX(-26px); }
+    .button, .nav-cta { transition: transform .2s ease, box-shadow .2s ease, filter .2s ease; }
+    .button:hover, .nav-cta:hover { transform: translateY(-2px); filter: brightness(1.06); }
+    @media (prefers-reduced-motion: reduce) { .sticker { animation: none; } .js-anim .skill-pill, .js-anim .project-card .tech { opacity: 1; transform: none; } }
   </style>
 </head>
 <body>
@@ -544,6 +575,7 @@
           <div class="visual-wrap fade-up" style="animation-delay:.1s">
             <div class="profile-strip">
               <div class="profile-photo"><img src="assets/foto-bima.webp" alt="Foto Bima Sena" width="760" height="950" fetchpriority="high"></div>
+              <span class="sticker">Terbuka untuk kolaborasi</span>
               <div class="profile-info"><span class="profile-kicker">Hai, saya</span><strong class="profile-name">Bima Sena</strong><span class="profile-role">Data Science · UNESA</span><div class="profile-tags"><span>S1 Sains Data</span><span>Juara 2 UI/UX</span><span>Surabaya</span></div></div>
             </div>
             <div class="visual-card">
@@ -1015,6 +1047,40 @@
         card.addEventListener('pointerleave', function () { card.style.setProperty('--rx', '0deg'); card.style.setProperty('--ry', '0deg'); });
       });
     }
+  })();
+  </script>
+<script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll('.skill-group, .project-card').forEach(function (box) {
+      box.querySelectorAll('.skill-pill, .tech').forEach(function (el, i) { el.style.setProperty('--i', i); });
+    });
+    var extra = document.querySelectorAll('.hero-grid > div:first-child > *, .visual-wrap > .visual-card, .about-point, .award-box, .contact-link, .contact-copy, .site-footer, footer');
+    var io = new IntersectionObserver(function (list) {
+      list.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target; el.classList.add('in'); io.unobserve(el);
+        setTimeout(function () { el.style.transitionDelay = ''; }, 1200);
+      });
+    }, { threshold: 0.1 });
+    extra.forEach(function (el, i) { el.classList.add('reveal'); el.style.transitionDelay = ((i % 4) * 110) + 'ms'; io.observe(el); });
+    var counters = document.querySelectorAll('.visual-metric strong, .trust-item strong');
+    var cio = new IntersectionObserver(function (list) {
+      list.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target; cio.unobserve(el);
+        var m = el.textContent.trim().match(/^(\d+(?:[.,]\d+)?)(.*)$/);
+        if (!m) return;
+        var sep = m[1].indexOf(',') > -1 ? ',' : '.', dec = m[1].split(/[.,]/)[1] ? m[1].split(/[.,]/)[1].length : 0;
+        var target = parseFloat(m[1].replace(',', '.')), start = performance.now();
+        (function tick(now) {
+          var t = Math.min((now - start) / 1300, 1), v = target * (1 - Math.pow(1 - t, 3));
+          el.textContent = v.toFixed(dec).replace('.', sep) + m[2];
+          if (t < 1) requestAnimationFrame(tick);
+        })(start);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (el) { cio.observe(el); });
   })();
   </script>
 </body>
