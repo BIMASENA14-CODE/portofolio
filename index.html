@@ -553,6 +553,9 @@
   
     .timeline-link { color: inherit; text-decoration: underline; text-decoration-color: #2dd4bf; text-decoration-thickness: 2px; text-underline-offset: 4px; transition: color .2s ease; }
     .timeline-link:hover { color: var(--blue); }
+  
+    button.timeline-link { padding: 0; border: 0; background: none; font: inherit; text-align: left; cursor: pointer; }
+    button.timeline-link:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
   </style>
 </head>
 <body>
@@ -652,7 +655,7 @@
             <div class="journey-card-header"><div><h3>Pendidikan</h3><p>Fondasi akademik dan pengembangan kompetensi.</p></div><span class="journey-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 10 5-10 5L2 8l10-5ZM6 10v6l6 3 6-3v-6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span></div>
             <div class="timeline">
               <div class="timeline-item"><h4>Universitas Negeri Surabaya</h4><span class="timeline-meta">Agustus 2024 – Sekarang · S1 Sains Data</span><p>IPK 3,61. Mata kuliah pendukung meliputi Machine Learning, Data Mining, Data Warehouse, Statistika, Big Data, Deep Learning, Calculus, dan Data Visualization.</p></div>
-              <div class="timeline-item"><h4><a class="timeline-link" href="https://www.celeratesschool.com/" target="_blank" rel="noopener noreferrer">Celerates Acceleration Mastery Program (CAMP) <span aria-hidden="true">↗</span></a></h4><span class="timeline-meta">Bootcamp Data Analyst & Business Intelligence · Batch 5 · Studi Independen Mandiri</span><p>Program intensif online sekitar 4 bulan. Materinya mencakup business intelligence dan problem space, database dan SQL, data warehouse dan ETL, storytelling with data, visualisasi data (Tableau dan Power BI), data governance, manajemen proyek, serta final project.</p></div>
+              <div class="timeline-item"><h4><button class="timeline-link" type="button" data-open-camp aria-haspopup="dialog">Celerates Acceleration Mastery Program (CAMP) <span aria-hidden="true">›</span></button></h4><span class="timeline-meta">Bootcamp Data Analyst & Business Intelligence · Batch 5 · Agustus – Desember 2026 (sedang berjalan)</span><p>Belajar database dan SQL, data warehouse dan ETL, storytelling with data, visualisasi (Tableau dan Power BI), hingga final project. Klik judul untuk melihat detail dan sertifikat.</p></div>
             </div>
             <div class="award-box"><span class="award-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 21h8m-4-4v4M7 4h10v5a5 5 0 0 1-10 0V4ZM7 6H4v2a4 4 0 0 0 4 4m9-6h3v2a4 4 0 0 1-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Juara 2 Kompetisi UI/UX DIMASTI tingkat nasional</strong><span>Diselenggarakan oleh FMIPA Universitas Nasional; merancang aplikasi interaktif dengan fokus pada pengalaman pengguna dan fungsionalitas.</span></div></div>
           </article>
@@ -769,6 +772,18 @@
   <div class="reading-progress" id="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
   <button class="floating-top" id="floating-top" type="button" aria-label="Kembali ke bagian atas" title="Kembali ke atas"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5m-7 7 7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog class="project-dialog" id="camp-dialog" aria-labelledby="camp-title">
+    <div class="dialog-header"><span class="dialog-eyebrow">PROGRAM BREAKDOWN</span><button class="dialog-close" id="camp-close" type="button" aria-label="Tutup detail program">×</button></div>
+    <div class="dialog-content">
+      <p class="dialog-category">Bootcamp · Studi Independen Mandiri · Batch 5</p>
+      <h2 id="camp-title">Celerates Acceleration Mastery Program (CAMP)</h2>
+      <p class="dialog-summary">Program belajar intensif online untuk track Data Analyst & Business Intelligence, berlangsung Agustus – Desember 2026. Belajarnya memadukan teori dan praktik dengan bimbingan praktisi, studi kasus industri, dan simulasi proyek nyata.</p>
+      <div class="dialog-result"><div class="dialog-result-mark">⏳</div><div><strong>Sedang berjalan</strong><span>Sertifikat kelulusan akan ditampilkan di sini setelah program selesai pada Desember 2026.</span></div></div>
+      <div class="dialog-section"><h3>Materi yang dipelajari</h3><div class="modal-tags"><span>Business Intelligence & Problem Space</span><span>Database & SQL</span><span>Data Warehouse & ETL</span><span>Analytics Methodology & Business Acumen</span><span>Storytelling with Data</span><span>Data Visualization (Tableau & Power BI)</span><span>Data Governance</span><span>Project Management</span><span>Final Project</span></div></div>
+      <div class="dialog-section"><h3>Metode belajar</h3><p>Blended learning (teori dan praktik), training dan mentoring bersama praktisi, studi kasus yang diadaptasi dari industri, simulasi proyek real case, serta penggunaan AI sebagai co-pilot untuk membantu problem solving dan mempercepat alur kerja.</p></div>
+      <div class="dialog-section"><h3>Hasil yang ditargetkan</h3><p>Mampu mengolah data dari database dan data warehouse, merancang dashboard dengan Tableau dan Power BI, menyampaikan temuan lewat storytelling, dan menyelesaikan final project berbasis kasus bisnis.</p></div>
+    </div>
+  </dialog>
   <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
     <div class="dialog-header"><span class="dialog-eyebrow">PROJECT BREAKDOWN</span><button class="dialog-close" id="dialog-close" type="button" aria-label="Tutup detail proyek">×</button></div>
     <div class="dialog-content">
@@ -1102,6 +1117,15 @@
       });
     }, { threshold: 0.6 });
     counters.forEach(function (el) { cio.observe(el); });
+  })();
+  </script>
+<script>
+  (function () {
+    var box = document.getElementById('camp-dialog'), open = document.querySelector('[data-open-camp]');
+    if (!box || !open) return;
+    open.addEventListener('click', function () { box.showModal(); });
+    document.getElementById('camp-close').addEventListener('click', function () { box.close(); });
+    box.addEventListener('click', function (e) { if (e.target === box) box.close(); });
   })();
   </script>
 </body>
