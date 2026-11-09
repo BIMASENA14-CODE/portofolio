@@ -556,6 +556,23 @@
   
     button.timeline-link { padding: 0; border: 0; background: none; font: inherit; text-align: left; cursor: pointer; }
     button.timeline-link:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+  
+    /* Perapian hasil screening */
+    .hero { padding: 40px 0 56px; }
+    .hero-grid { align-items: start; gap: 56px; }
+    .hero-grid > div:first-child { padding-top: 30px; }
+    .visual-card { min-height: 0; }
+    @media (max-width: 980px) { .hero-grid > div:first-child { padding-top: 0; } }
+    html[data-theme="dark"] .project-art:not(.art-shot) .art-graphic { filter: brightness(.7) saturate(1.2); }
+    .contact-link .contact-icon { display: grid; place-items: center; }
+    .contact-icon svg { display: block; }
+    .learning { margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.12); }
+    .learning-label { display: block; margin-bottom: 11px; color: #9aa3c7; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .learning-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .learning-tags span { padding: 7px 12px; border-radius: 99px; color: #eef0ff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); font-size: 12px; font-weight: 750; }
+    .learning-tags span:nth-child(1) { border-color: #7c6cff; } .learning-tags span:nth-child(2) { border-color: #2dd4bf; } .learning-tags span:nth-child(3) { border-color: #f472b6; } .learning-tags span:nth-child(4) { border-color: #fbbf24; }
+  
+    @media (max-width: 520px) { .sticker { top: -24px; right: 10px; font-size: 10.5px; } .profile-strip { margin-top: 10px; } }
   </style>
 </head>
 <body>
@@ -741,9 +758,9 @@
       <div class="container">
         <div class="section-heading"><div><p class="section-kicker">04 / Keahlian</p><h2>Toolkit untuk mengolah data.</h2></div><p class="section-description">Kombinasi pemrograman, statistika, machine learning, dan komunikasi membantu saya mengerjakan proses analisis dari eksplorasi hingga penyajian hasil.</p></div>
         <div class="skills-grid">
-          <article class="skills-intro"><div class="mini-label"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Skill stack</div><h3>Teknis, analitis, dan komunikatif.</h3><p>Fokus saya adalah menghubungkan pemodelan dengan kebutuhan analisis, lalu menyampaikan temuan lewat visualisasi yang mudah dimengerti.</p><div class="skills-callout"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> Fokus: Data Analytics & Machine Learning</div></article>
+          <article class="skills-intro"><div class="mini-label"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Skill stack</div><h3>Teknis, analitis, dan komunikatif.</h3><p>Fokus saya adalah menghubungkan pemodelan dengan kebutuhan analisis, lalu menyampaikan temuan lewat visualisasi yang mudah dimengerti.</p><div class="skills-callout"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> Fokus: Data Analytics & Machine Learning</div><div class="learning"><span class="learning-label">Sedang saya dalami</span><div class="learning-tags"><span>Business Intelligence</span><span>Data Warehouse & ETL</span><span>Graph Data Science</span><span>IndoBERT</span></div></div></article>
           <div class="skill-groups">
-            <article class="skill-group"><h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Bahasa pemrograman</h4><div class="skill-pills"><span class="skill-pill highlight">Python</span><span class="skill-pill highlight">R (Statistik)</span><span class="skill-pill highlight">SQL</span></div></article>
+            <article class="skill-group"><h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Bahasa & tools</h4><div class="skill-pills"><span class="skill-pill highlight">Python</span><span class="skill-pill highlight">R (Statistik)</span><span class="skill-pill highlight">SQL</span><span class="skill-pill">Streamlit</span><span class="skill-pill">DuckDB</span><span class="skill-pill">Neo4j</span><span class="skill-pill">GitHub</span></div></article>
             <article class="skill-group"><h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V5m0 14h17M8 15l4-5 3 3 5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Analisis & visualisasi</h4><div class="skill-pills"><span class="skill-pill">Data Analysis</span><span class="skill-pill">Data Visualization</span><span class="skill-pill">Interactive Dashboard</span><span class="skill-pill">Data Mining</span></div></article>
             <article class="skill-group"><h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 4 7v5c0 4.5 3.4 7.6 8 9 4.6-1.4 8-4.5 8-9V7l-8-4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.5 12 2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Machine learning</h4><div class="skill-pills"><span class="skill-pill highlight">Classification</span><span class="skill-pill">Regression</span><span class="skill-pill">Forecasting</span><span class="skill-pill">Clustering</span><span class="skill-pill">Computer Vision</span><span class="skill-pill">NLP</span></div></article>
             <article class="skill-group"><h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8m0-12.8L5.6 18.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Soft skills</h4><div class="skill-pills"><span class="skill-pill">Analytical Thinking</span><span class="skill-pill">Problem Solving</span><span class="skill-pill">Communication</span></div></article>
