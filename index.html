@@ -573,6 +573,30 @@
     .learning-tags span:nth-child(1) { border-color: #7c6cff; } .learning-tags span:nth-child(2) { border-color: #2dd4bf; } .learning-tags span:nth-child(3) { border-color: #f472b6; } .learning-tags span:nth-child(4) { border-color: #fbbf24; }
   
     @media (max-width: 520px) { .sticker { top: -24px; right: 10px; font-size: 10.5px; } .profile-strip { margin-top: 10px; } }
+  
+    /* ===== Kartu ID menggantung ===== */
+    .lanyard-stage { position: relative; width: 100%; height: 560px; }
+    .lanyard-stage canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; cursor: grab; outline: none; touch-action: pan-y; }
+    .lanyard-hint { position: absolute; left: 50%; bottom: 4px; transform: translateX(-50%); padding: 6px 12px; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); background: color-mix(in srgb, var(--white) 70%, transparent); font-size: 11px; font-weight: 700; white-space: nowrap; pointer-events: none; }
+    @media (max-width: 980px) { .lanyard-stage { height: 500px; } }
+    @media (max-width: 520px) { .lanyard-stage { height: 440px; } }
+    /* ===== Tool belt ===== */
+    .toolbelt { margin-top: 34px; }
+    .toolbelt-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 16px; }
+    .toolbelt-head span { font-size: 22px; font-weight: 850; letter-spacing: -.03em; }
+    .toolbelt-head small { color: var(--muted); font-size: 13px; font-weight: 600; }
+    .toolbelt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 14px; }
+    .tool { display: grid; grid-template-columns: 50px 1fr; column-gap: 13px; align-items: center; padding: 14px; border: 1px solid color-mix(in srgb, var(--c) 38%, transparent); border-radius: 18px; background: color-mix(in srgb, var(--c) 11%, var(--white)); transition: transform .3s cubic-bezier(.2,.8,.3,1.3), background .3s ease, box-shadow .3s ease, border-color .3s ease, opacity .6s ease; }
+    .tool-mark { grid-row: span 2; display: grid; place-items: center; width: 50px; height: 50px; border-radius: 15px; color: #fff; background: linear-gradient(135deg, var(--c), color-mix(in srgb, var(--c) 55%, #000)); font-size: 15px; font-weight: 850; letter-spacing: -.02em; box-shadow: 0 8px 18px color-mix(in srgb, var(--c) 35%, transparent); transition: transform .35s cubic-bezier(.2,.8,.3,1.4); }
+    .tool-name { align-self: end; font-size: 15px; font-weight: 850; }
+    .tool-use { align-self: start; margin-top: 2px; color: var(--muted); font-size: 11.5px; font-weight: 600; line-height: 1.3; }
+    .tool:hover { transform: translateY(-6px) rotate(-1.2deg); border-color: var(--c); background: color-mix(in srgb, var(--c) 22%, var(--white)); box-shadow: 0 18px 34px color-mix(in srgb, var(--c) 26%, transparent); animation: none; }
+    .tool:hover .tool-mark { transform: rotate(-9deg) scale(1.1); }
+    .js-anim .tool { opacity: 0; transform: translateY(22px) scale(.96); }
+    .js-anim .toolbelt.in .tool { opacity: 1; transform: none; transition-delay: calc(var(--k) * 70ms); animation: bob 6s ease-in-out calc(1.4s + var(--k) * .35s) infinite; }
+    .js-anim .toolbelt.in .tool:hover { transition-delay: 0s; animation: none; transform: translateY(-6px) rotate(-1.2deg); }
+    @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    @media (prefers-reduced-motion: reduce) { .tool { animation: none !important; opacity: 1 !important; transform: none !important; } }
   </style>
 </head>
 <body>
@@ -611,33 +635,7 @@
             </div>
             <div class="hero-location"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg> Surabaya, Indonesia <span aria-hidden="true">·</span> S1 Sains Data, semester 5</div>
           </div>
-          <div class="visual-wrap fade-up" style="animation-delay:.1s">
-            <div class="profile-strip">
-              <div class="profile-photo"><img src="assets/foto-bima.webp" alt="Foto Bima Sena" width="760" height="950" fetchpriority="high"></div>
-              <span class="sticker">Terbuka untuk kolaborasi</span>
-              <div class="profile-info"><span class="profile-kicker">Hai, saya</span><strong class="profile-name">Bima Sena</strong><span class="profile-role">Data Science · UNESA</span><div class="profile-tags"><span>S1 Sains Data</span><span>Juara 2 UI/UX</span><span>Surabaya</span></div></div>
-            </div>
-            <div class="visual-card">
-              <div class="visual-top"><span class="visual-label">Data in motion</span><span class="live-pill"><span></span> Explore · Analyze · Build</span></div>
-              <div class="visual-title">Data bukan sekadar angka. <span>Temukan ceritanya.</span></div>
-              <div class="chart-area">
-                <div class="chart-header"><span>Model performance · sample visual</span><b>ML / Analytics</b></div>
-                <svg class="chart-svg" viewBox="0 0 380 116" fill="none" role="img" aria-label="Ilustrasi grafik garis analisis data">
-                  <path d="M0 22H380M0 52H380M0 82H380" stroke="white" stroke-opacity=".09" stroke-dasharray="3 5"/>
-                  <path d="M8 87 C28 78, 37 89, 54 73 S83 67, 103 76 S132 50, 151 56 S180 73, 202 42 S234 53, 254 32 S286 42, 307 23 S344 34, 372 10" stroke="#8ca7ff" stroke-width="2.5" stroke-linecap="round"/>
-                  <path d="M8 95 C37 94, 44 76, 63 87 S94 93, 112 62 S144 74, 166 65 S197 80, 220 57 S251 65, 278 43 S315 60, 337 40 S358 43, 372 32" stroke="#5eead4" stroke-width="2.5" stroke-linecap="round"/>
-                  <circle cx="372" cy="10" r="4" fill="#8ca7ff"/><circle cx="372" cy="32" r="4" fill="#5eead4"/>
-                  <text x="8" y="111" fill="#8d9bb0" font-size="8">DATA</text><text x="336" y="111" fill="#8d9bb0" font-size="8">INSIGHT →</text>
-                </svg>
-              </div>
-              <div class="visual-metrics">
-                <div class="visual-metric"><strong>96.67%</strong><span>Akurasi uji klasifikasi daun</span></div>
-                <div class="visual-metric"><strong>87,4%</strong><span>Akurasi klasifikasi komentar</span></div>
-                <div class="visual-metric"><strong>3.61</strong><span>IPK saat ini</span></div>
-              </div>
-            </div>
-            <div class="floating-note"><div class="floating-icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 16 5-5 3 3 7-8M14 6h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Curious by nature.</strong><span>Analytical by practice.</span></div></div>
-          </div>
+          <div class="visual-wrap fade-up" style="animation-delay:.1s"><div class="lanyard-stage" id="lanyard-stage"><canvas id="lanyard-canvas" role="img" aria-label="Kartu ID interaktif Bima Sena, bisa ditarik dan diklik untuk dibalik"></canvas><span class="lanyard-hint">Tarik kartunya · klik untuk membalik</span></div></div>
         </div>
         <div class="trust-strip" aria-label="Ringkasan profil">
           <div class="trust-item"><div class="trust-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V5m0 14h17M8 15l4-5 3 3 5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>6</strong><span>Proyek data dan machine learning</span></div></div>
@@ -766,6 +764,7 @@
             <article class="skill-group"><h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8m0-12.8L5.6 18.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Soft skills</h4><div class="skill-pills"><span class="skill-pill">Analytical Thinking</span><span class="skill-pill">Problem Solving</span><span class="skill-pill">Communication</span></div></article>
           </div>
         </div>
+      <div class="toolbelt"><div class="toolbelt-head"><span>Tool belt</span><small>Yang saya pakai, dan di mana</small></div><div class="toolbelt-grid"><div class="tool" style="--c:#7c6cff;--k:0"><span class="tool-mark">Py</span><span class="tool-name">Python</span><span class="tool-use">Semua proyek</span></div><div class="tool" style="--c:#2dd4bf;--k:1"><span class="tool-mark">R</span><span class="tool-name">R</span><span class="tool-use">Statistik dan analisis data</span></div><div class="tool" style="--c:#f472b6;--k:2"><span class="tool-mark">SQL</span><span class="tool-name">SQL</span><span class="tool-use">Query dan data warehouse</span></div><div class="tool" style="--c:#fbbf24;--k:3"><span class="tool-mark">St</span><span class="tool-name">Streamlit</span><span class="tool-use">Export Finder, Forecasting</span></div><div class="tool" style="--c:#38bdf8;--k:4"><span class="tool-mark">Dk</span><span class="tool-name">DuckDB</span><span class="tool-use">Olah data BACI skala besar</span></div><div class="tool" style="--c:#34d399;--k:5"><span class="tool-mark">N4</span><span class="tool-name">Neo4j</span><span class="tool-use">Rekomendasi graf RetailRocket</span></div><div class="tool" style="--c:#7c6cff;--k:6"><span class="tool-mark">Jp</span><span class="tool-name">Jupyter</span><span class="tool-use">Eksplorasi dan modeling</span></div><div class="tool" style="--c:#2dd4bf;--k:7"><span class="tool-mark">GH</span><span class="tool-name">GitHub</span><span class="tool-use">Semua repositori proyek</span></div><div class="tool" style="--c:#f472b6;--k:8"><span class="tool-mark">Tb</span><span class="tool-name">Tableau</span><span class="tool-use">Sedang dipelajari di CAMP</span></div><div class="tool" style="--c:#fbbf24;--k:9"><span class="tool-mark">BI</span><span class="tool-name">Power BI</span><span class="tool-use">Sedang dipelajari di CAMP</span></div></div></div>
       </div>
     </section>
 
@@ -1143,6 +1142,167 @@
     open.addEventListener('click', function () { box.showModal(); });
     document.getElementById('camp-close').addEventListener('click', function () { box.close(); });
     box.addEventListener('click', function (e) { if (e.target === box) box.close(); });
+  })();
+  </script>
+<script>
+  (function () {
+    var belt = document.querySelector('.toolbelt');
+    if (belt && 'IntersectionObserver' in window) {
+      var bio = new IntersectionObserver(function (l) { if (l[0].isIntersecting) { belt.classList.add('in'); bio.disconnect(); } }, { threshold: 0.15 });
+      bio.observe(belt);
+    } else if (belt) { belt.classList.add('in'); }
+
+    var stage = document.getElementById('lanyard-stage');
+    if (!stage) return;
+    var cv = stage.querySelector('canvas'), ctx = cv.getContext('2d');
+    var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var photo = new Image(), photoOk = false;
+    photo.onload = function () { photoOk = true; draw(); }; photo.src = 'assets/foto-bima.webp';
+    var CW = 236, CH = 350, N = 7, SEG = 30;
+    var W = 0, H = 0, dpr = 1, S = 1, seg = 30, ax = 0, ay = 0;
+    var pts = [], ang = 0, angV = 0, flipT = 0, flipTo = 0, drag = null, raf = 0, visible = true;
+    var cx = 0, cy = 0;
+
+    function rr(x, y, w, h, r) {
+      ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+    }
+    function init() {
+      var r = stage.getBoundingClientRect(); W = r.width; H = r.height; dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      S = Math.min(1, W / 330, H / 560); seg = SEG * S; ax = W / 2; ay = -14 * S;
+      pts = [];
+      for (var i = 0; i < N; i++) pts.push({ x: ax + i * 2, y: ay + i * seg, px: ax + i * 2, py: ay + i * seg });
+      if (!calm) { pts[N - 1].px -= 14 * S; pts[N - 1].py -= 3 * S; }
+      for (var k = 0; k < 20; k++) solve();
+      place(); draw();
+    }
+    function solve() {
+      pts[0].x = ax; pts[0].y = ay;
+      for (var i = 0; i < N - 1; i++) {
+        var a = pts[i], b = pts[i + 1], dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy) || 0.0001, f = (d - seg) / d;
+        var pinA = (i === 0), pinB = (drag && i + 1 === N - 1);
+        if (pinA) { b.x -= dx * f; b.y -= dy * f; }
+        else if (pinB) { a.x += dx * f; a.y += dy * f; }
+        else { a.x += dx * f * 0.5; a.y += dy * f * 0.5; b.x -= dx * f * 0.5; b.y -= dy * f * 0.5; }
+      }
+    }
+    function step() {
+      for (var i = 1; i < N; i++) {
+        var p = pts[i], vx = (p.x - p.px) * 0.972, vy = (p.y - p.py) * 0.972;
+        p.px = p.x; p.py = p.y; p.x += vx; p.y += vy + (i === N - 1 ? 0.95 : 0.4) * S;
+      }
+      if (drag) { var l = pts[N - 1]; l.x = drag.x + drag.ox; l.y = drag.y + drag.oy; l.px = l.x; l.py = l.y; }
+      for (var k = 0; k < 14; k++) solve();
+      place();
+    }
+    function place() {
+      var l = pts[N - 1], q = pts[N - 2], dx = l.x - q.x, dy = l.y - q.y, d = Math.hypot(dx, dy) || 1;
+      dx /= d; dy /= d;
+      var target = -Math.atan2(dx, dy);
+      if (calm) { ang = target; angV = 0; } else { angV += (target - ang) * 0.1; angV *= 0.84; ang += angV; }
+      cx = l.x + dx * (CH / 2 + 6) * S; cy = l.y + dy * (CH / 2 + 6) * S;
+    }
+    function bars(cxl, y0, h) {
+      var x = cxl - 70, i = 0;
+      while (x < cxl + 70) { var w = ((i * 7 + 3) % 4 + 1) * 1.2; ctx.fillRect(x, y0, w, h); x += w + ((i * 5) % 3 + 1.2); i++; }
+    }
+    function front() {
+      var g = ctx.createLinearGradient(-CW / 2, -CH / 2, CW / 2, CH / 2);
+      g.addColorStop(0, '#242a7a'); g.addColorStop(.55, '#0c1030'); g.addColorStop(1, '#0f4a5c');
+      ctx.shadowColor = 'rgba(0,0,0,.5)'; ctx.shadowBlur = 30; ctx.shadowOffsetY = 16;
+      rr(-CW / 2, -CH / 2, CW, CH, 24); ctx.fillStyle = g; ctx.fill(); ctx.shadowColor = 'transparent';
+      ctx.lineWidth = 1.5; ctx.strokeStyle = 'rgba(255,255,255,.22)'; ctx.stroke();
+      rr(-24, -CH / 2 + 12, 48, 9, 4.5); ctx.fillStyle = 'rgba(0,0,0,.55)'; ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.font = '800 10px Inter, Verdana, sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('DATA SCIENCE ID', 0, -CH / 2 + 40);
+      var y0 = -CH / 2 + 54, pw = 176, ph = 176;
+      ctx.save(); ctx.beginPath(); ctx.moveTo(-pw / 2, y0 + pw / 2); ctx.arc(0, y0 + pw / 2, pw / 2, Math.PI, 0);
+      ctx.lineTo(pw / 2, y0 + ph - 14); ctx.arcTo(pw / 2, y0 + ph, pw / 2 - 14, y0 + ph, 14); ctx.lineTo(-pw / 2 + 14, y0 + ph);
+      ctx.arcTo(-pw / 2, y0 + ph, -pw / 2, y0 + ph - 14, 14); ctx.closePath();
+      ctx.fillStyle = '#131a4a'; ctx.fill();
+      var ring = ctx.createLinearGradient(-pw / 2, y0, pw / 2, y0 + ph); ring.addColorStop(0, '#7c5cff'); ring.addColorStop(1, '#2dd4bf');
+      ctx.save(); ctx.clip(); if (photoOk) ctx.drawImage(photo, 0, 0, 760, 760, -pw / 2, y0, pw, ph); ctx.restore();
+      ctx.lineWidth = 3.5; ctx.strokeStyle = ring; ctx.stroke(); ctx.restore();
+      ctx.fillStyle = '#fff'; ctx.font = '800 25px Inter, Verdana, sans-serif'; ctx.fillText('Bima Sena', 0, y0 + ph + 36);
+      ctx.fillStyle = '#5eead4'; ctx.font = '700 12.5px Inter, Verdana, sans-serif'; ctx.fillText('Data Science · UNESA', 0, y0 + ph + 56);
+      ctx.fillStyle = 'rgba(255,255,255,.6)'; ctx.font = '600 11px Inter, Verdana, sans-serif'; ctx.fillText('S1 Sains Data · Surabaya', 0, y0 + ph + 74);
+      ctx.fillStyle = 'rgba(255,255,255,.72)'; bars(0, CH / 2 - 34, 16);
+      ctx.save(); ctx.translate(58, y0 + ph - 6); ctx.rotate(0.14); rr(-64, -12, 128, 24, 6); ctx.fillStyle = '#fbbf24'; ctx.fill();
+      ctx.fillStyle = '#3b2a00'; ctx.font = '800 10.5px Inter, Verdana, sans-serif'; ctx.fillText('Terbuka kolaborasi', 0, 4); ctx.restore();
+    }
+    function back() {
+      var g = ctx.createLinearGradient(-CW / 2, -CH / 2, CW / 2, CH / 2);
+      g.addColorStop(0, '#123a52'); g.addColorStop(.5, '#0c1030'); g.addColorStop(1, '#2d2278');
+      ctx.shadowColor = 'rgba(0,0,0,.5)'; ctx.shadowBlur = 30; ctx.shadowOffsetY = 16;
+      rr(-CW / 2, -CH / 2, CW, CH, 24); ctx.fillStyle = g; ctx.fill(); ctx.shadowColor = 'transparent';
+      ctx.lineWidth = 1.5; ctx.strokeStyle = 'rgba(255,255,255,.22)'; ctx.stroke();
+      rr(-24, -CH / 2 + 12, 48, 9, 4.5); ctx.fillStyle = 'rgba(0,0,0,.55)'; ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.font = '800 10px Inter, Verdana, sans-serif'; ctx.textAlign = 'center'; ctx.fillText('SEKILAS', 0, -CH / 2 + 40);
+      var rows = [['3,61', 'IPK S1 Sains Data', '#5eead4'], ['6', 'Proyek data dan machine learning', '#a5b4fc'], ['96,67%', 'Akurasi uji klasifikasi daun', '#f9a8d4'], ['87,4%', 'Akurasi klasifikasi komentar', '#fcd34d']];
+      ctx.textAlign = 'left';
+      rows.forEach(function (r, i) {
+        var y = -CH / 2 + 92 + i * 62;
+        ctx.fillStyle = r[2]; ctx.font = '850 27px Inter, Verdana, sans-serif'; ctx.fillText(r[0], -CW / 2 + 28, y);
+        ctx.fillStyle = 'rgba(255,255,255,.66)'; ctx.font = '600 11.5px Inter, Verdana, sans-serif'; ctx.fillText(r[1], -CW / 2 + 28, y + 18);
+      });
+      ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.font = '700 10.5px Inter, Verdana, sans-serif';
+      ctx.fillText('portofoliobima.steamcraft.online', 0, CH / 2 - 22);
+    }
+    function draw() {
+      if (!W) return;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+      ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); for (var i = 1; i < N; i++) ctx.lineTo(pts[i].x, pts[i].y);
+      var sg = ctx.createLinearGradient(0, 0, 0, H * 0.55); sg.addColorStop(0, '#7c5cff'); sg.addColorStop(1, '#2dd4bf');
+      ctx.strokeStyle = sg; ctx.lineWidth = 15 * S; ctx.stroke();
+      ctx.strokeStyle = 'rgba(255,255,255,.5)'; ctx.lineWidth = 1.3; ctx.setLineDash([5 * S, 6 * S]); ctx.stroke(); ctx.setLineDash([]);
+      ctx.save(); ctx.translate(cx, cy); ctx.rotate(ang); ctx.scale(S, S);
+      var sx = Math.max(Math.abs(Math.cos(flipT * Math.PI)), 0.001);
+      ctx.save(); ctx.scale(sx, 1); if (flipT < 0.5) front(); else back();
+      var sh = ctx.createLinearGradient(-CW / 2 + Math.sin(ang * 4 + flipT * 3) * 90, -CH / 2, CW / 2 + Math.sin(ang * 4 + flipT * 3) * 90, CH / 2);
+      sh.addColorStop(0, 'rgba(255,255,255,0)'); sh.addColorStop(.5, 'rgba(255,255,255,.07)'); sh.addColorStop(1, 'rgba(255,255,255,0)');
+      rr(-CW / 2, -CH / 2, CW, CH, 24); ctx.fillStyle = sh; ctx.fill(); ctx.restore();
+      var mg = ctx.createLinearGradient(-13, 0, 13, 0); mg.addColorStop(0, '#e6e8f2'); mg.addColorStop(1, '#8a8fa6');
+      rr(-13, -CH / 2 - 22, 26, 32, 6); ctx.fillStyle = mg; ctx.fill();
+      ctx.beginPath(); ctx.arc(0, -CH / 2 - 11, 4.5, 0, 6.3); ctx.fillStyle = '#2a2f55'; ctx.fill();
+      ctx.restore();
+    }
+    function loop() {
+      raf = 0;
+      if (!calm) { if (!visible) return; step(); }
+      flipT += (flipTo - flipT) * 0.14; draw();
+      if (!calm || Math.abs(flipTo - flipT) > 0.003) raf = requestAnimationFrame(loop);
+    }
+    function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+    function pos(e) { var r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
+    function hit(p) {
+      var dx = p.x - cx, dy = p.y - cy, c = Math.cos(ang), s = Math.sin(ang);
+      var lx = (c * dx + s * dy) / S, ly = (-s * dx + c * dy) / S;
+      return Math.abs(lx) < CW / 2 && Math.abs(ly) < CH / 2 + 16;
+    }
+    cv.addEventListener('pointerdown', function (e) {
+      var p = pos(e); if (!hit(p)) return;
+      var l = pts[N - 1];
+      drag = { ox: l.x - p.x, oy: l.y - p.y, x: p.x, y: p.y, t: performance.now(), moved: 0, sx: p.x, sy: p.y };
+      cv.setPointerCapture(e.pointerId); cv.style.cursor = 'grabbing'; kick();
+    });
+    cv.addEventListener('pointermove', function (e) {
+      var p = pos(e);
+      if (drag) {
+        if (!calm) { drag.x = p.x; drag.y = p.y; }
+        drag.moved = Math.max(drag.moved, Math.hypot(p.x - drag.sx, p.y - drag.sy));
+      } else cv.style.cursor = hit(p) ? 'grab' : 'default';
+    });
+    function release() {
+      if (!drag) return;
+      if (drag.moved < 6 && performance.now() - drag.t < 500) flipTo = flipTo ? 0 : 1;
+      drag = null; cv.style.cursor = 'grab'; kick();
+    }
+    cv.addEventListener('pointerup', release); cv.addEventListener('pointercancel', release);
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (l) { visible = l[0].isIntersecting; if (visible) kick(); }).observe(stage);
+    var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { init(); kick(); }, 150); });
+    init(); kick();
   })();
   </script>
 </body>
