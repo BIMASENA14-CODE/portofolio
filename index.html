@@ -600,6 +600,43 @@
   
     /* Latar bergerak: konstelasi data */
     #bg-net { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; }
+  
+    /* ===== Navigasi pill melayang ===== */
+    @media (min-width: 761px) {
+      .site-header { position: fixed; top: 14px; left: 50%; right: auto; width: auto; max-width: calc(100% - 32px); transform: translateX(-50%); padding: 6px 8px; border: 1px solid var(--line); border-radius: 999px; background: rgba(243,242,255,.66); -webkit-backdrop-filter: blur(20px) saturate(1.4); backdrop-filter: blur(20px) saturate(1.4); box-shadow: 0 14px 40px rgba(79,70,229,.14), inset 0 1px 0 rgba(255,255,255,.5); }
+      html[data-theme="dark"] .site-header { background: rgba(14,18,50,.55); border-color: rgba(255,255,255,.14); box-shadow: 0 14px 44px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.08); }
+      .site-header .container.nav { width: auto; max-width: none; height: auto; margin: 0; padding: 0; gap: 6px; }
+      .brand > span:not(.brand-mark) { display: none; }
+      .brand-mark { width: 42px; height: 42px; border-radius: 50%; }
+      .nav-links { position: relative; gap: 2px; margin: 0 4px; }
+      .nav-links a { position: relative; z-index: 1; padding: 11px 17px; border-radius: 99px; color: var(--ink-soft); font-size: 13.5px; font-weight: 750; }
+      .nav-links a.active { color: var(--ink); }
+      .nav-indicator { position: absolute; z-index: 0; top: 0; bottom: 0; left: 0; width: 0; border-radius: 99px; border: 1px solid color-mix(in srgb, var(--blue) 50%, transparent); background: linear-gradient(135deg, rgba(124,92,255,.26), rgba(45,212,191,.2)); box-shadow: 0 0 24px rgba(124,92,255,.35), inset 0 1px 0 rgba(255,255,255,.18); transition: left .38s cubic-bezier(.3,.8,.3,1), width .38s cubic-bezier(.3,.8,.3,1), opacity .2s ease; pointer-events: none; }
+      .nav-actions { gap: 6px; padding-left: 8px; border-left: 1px solid var(--line); }
+      .theme-toggle { width: 42px; min-height: 42px; padding: 0; border-radius: 50%; }
+      .theme-toggle-label { display: none; }
+      .nav-cta { min-height: 42px; border-radius: 99px; }
+      .hero { padding-top: 116px; }
+    }
+    /* ===== Kartu statistik berbingkai cahaya ===== */
+    @property --a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+    @keyframes borderspin { to { --a: 360deg; } }
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
+    .stat-card { position: relative; overflow: hidden; padding: 20px 22px; border: 1px solid color-mix(in srgb, var(--c) 22%, transparent); border-radius: 24px; background: color-mix(in srgb, var(--c) 8%, var(--white)); transition: transform .3s cubic-bezier(.2,.8,.3,1.2), box-shadow .3s ease; }
+    html[data-theme="dark"] .stat-card { background: linear-gradient(160deg, #131a3b, #0a0e26); }
+    .stat-card::before { content: ""; position: absolute; inset: -1px; padding: 2px; border-radius: inherit; pointer-events: none; background: conic-gradient(from var(--a), transparent 0 60%, var(--c) 78%, #fff 90%, transparent 100%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); animation: borderspin 6s linear infinite; }
+    .stat-card:nth-child(2)::before { animation-delay: -1.5s; } .stat-card:nth-child(3)::before { animation-delay: -3s; } .stat-card:nth-child(4)::before { animation-delay: -4.5s; }
+    .stat-card:hover { transform: translateY(-5px); box-shadow: 0 20px 44px color-mix(in srgb, var(--c) 26%, transparent); }
+    .stat-top { display: flex; align-items: center; justify-content: space-between; }
+    .stat-icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; color: var(--c); background: color-mix(in srgb, var(--c) 16%, transparent); border: 1px solid color-mix(in srgb, var(--c) 36%, transparent); }
+    .stat-num { font-size: 42px; font-weight: 850; letter-spacing: -.05em; line-height: 1; }
+    .stat-title { display: block; margin-top: 18px; font-size: 12.5px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    .stat-desc { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; font-weight: 600; line-height: 1.35; }
+    @media (max-width: 760px) { .stat-grid { grid-template-columns: repeat(2, 1fr); margin-top: 38px; gap: 12px; } .stat-card { padding: 16px; } .stat-num { font-size: 32px; } .stat-icon { width: 40px; height: 40px; } }
+    .contact-link:nth-child(4) { --c: #fbbf24; }
+    @media (prefers-reduced-motion: reduce) { .stat-card::before { animation: none; } .nav-indicator { transition: none; } }
+  
+    @media (min-width: 761px) { .nav-cta { white-space: nowrap; padding-inline: 18px; } .nav-links a { white-space: nowrap; } }
   </style>
 </head>
 <body>
@@ -610,6 +647,7 @@
         <span class="brand-mark">BS</span><span>Bima Sena<small>Data Science Portfolio</small></span>
       </a>
       <nav class="nav-links" id="site-nav" aria-label="Navigasi utama">
+        <a href="#home">Beranda</a>
         <a href="#about">Tentang</a>
         <a href="#journey">Perjalanan</a>
         <a href="#projects">Proyek</a>
@@ -640,12 +678,7 @@
           </div>
           <div class="visual-wrap fade-up" style="animation-delay:.1s"><div class="lanyard-stage" id="lanyard-stage"><canvas id="lanyard-canvas" role="img" aria-label="Kartu ID interaktif Bima Sena, bisa ditarik dan diklik untuk dibalik"></canvas><span class="lanyard-hint">Tarik kartunya · klik untuk membalik</span></div></div>
         </div>
-        <div class="trust-strip" aria-label="Ringkasan profil">
-          <div class="trust-item"><div class="trust-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V5m0 14h17M8 15l4-5 3 3 5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>6</strong><span>Proyek data dan machine learning</span></div></div>
-          <div class="trust-item"><div class="trust-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 14.8 8.7 21 9.6l-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div><strong>Juara 2</strong><span>Kompetisi UI/UX DIMASTI tingkat nasional</span></div></div>
-          <div class="trust-item"><div class="trust-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 4h18v13H3zM8 21h8m-4-4v4M7 8h4m-4 4h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Dashboard</strong><span>Visualisasi data interaktif</span></div></div>
-          <div class="trust-item"><div class="trust-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8m0-12.8L5.6 18.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><strong>End-to-end</strong><span>Dari data mentah ke insight</span></div></div>
-        </div>
+        <div class="stat-grid" aria-label="Ringkasan profil"><div class="stat-card" style="--c:#7c6cff"><div class="stat-top"><span class="stat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></span><span class="stat-num">6</span></div><strong class="stat-title">Proyek</strong><span class="stat-desc">Karya data dan machine learning</span></div><div class="stat-card" style="--c:#2dd4bf"><div class="stat-top"><span class="stat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span><span class="stat-num">3</span></div><strong class="stat-title">Dashboard</strong><span class="stat-desc">Visualisasi yang bisa dicoba</span></div><div class="stat-card" style="--c:#fbbf24"><div class="stat-top"><span class="stat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16M10 14.7V17c0 .6-.5 1-1.2 1.2C7.8 18.8 7 20.2 7 22M14 14.7V17c0 .6.5 1 1.2 1.2 1 .6 1.8 2 1.8 3.8"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span><span class="stat-num">1</span></div><strong class="stat-title">Penghargaan</strong><span class="stat-desc">Juara 2 UI/UX DIMASTI nasional</span></div><div class="stat-card" style="--c:#f472b6"><div class="stat-top"><span class="stat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span class="stat-num">1</span></div><strong class="stat-title">Bootcamp</strong><span class="stat-desc">CAMP Data Analyst & BI, berjalan</span></div></div>
       </div>
     </section>
 
@@ -781,6 +814,7 @@
             <a class="contact-link" href="mailto:bimasena1412@gmail.com"><span class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span>Email</span><strong>bimasena1412@gmail.com</strong></div></a>
             <a class="contact-link" href="tel:+6285604196931"><span class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 16.5v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 10.2 18a19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 1.9 3.2 2 2 0 0 1 3.9 1h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.8L7 9.3a16 16 0 0 0 6 6l1.8-1.8a2 2 0 0 1 1.8-.6l3 .5a2 2 0 0 1 1.4 3.1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span>Telepon</span><strong>+62 856-0419-6931</strong></div></a>
             <a class="contact-link" href="https://github.com/BIMASENA14-CODE" target="_blank" rel="noopener noreferrer"><span class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.2-1.5 6.2-6.7A5.2 5.2 0 0 0 19 5.2 4.8 4.8 0 0 0 18.9 2S17.7 1.6 15 3.4a13.4 13.4 0 0 0-7 0C5.3 1.6 4.1 2 4.1 2A4.8 4.8 0 0 0 4 5.2a5.2 5.2 0 0 0-1.3 3.6c0 5.2 3.2 6.4 6.2 6.7a3.4 3.4 0 0 0-.9 2.6V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span>GitHub</span><strong>github.com/BIMASENA14-CODE</strong></div></a>
+            <a class="contact-link" href="https://www.instagram.com/bimashen_" target="_blank" rel="noopener noreferrer"><span class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span><div><span>Instagram</span><strong>@bimashen_</strong></div></a>
             <button class="copy-email-button" id="copy-email" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg> Salin alamat email</button>
           </div>
         </div>
@@ -1119,7 +1153,7 @@
       });
     }, { threshold: 0.1 });
     extra.forEach(function (el, i) { el.classList.add('reveal'); el.style.transitionDelay = ((i % 4) * 110) + 'ms'; io.observe(el); });
-    var counters = document.querySelectorAll('.visual-metric strong, .trust-item strong');
+    var counters = document.querySelectorAll('.stat-num, .visual-metric strong, .trust-item strong');
     var cio = new IntersectionObserver(function (list) {
       list.forEach(function (entry) {
         if (!entry.isIntersecting) return;
@@ -1161,7 +1195,7 @@
     var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var photo = new Image(), photoOk = false;
     photo.onload = function () { photoOk = true; draw(); }; photo.src = 'assets/foto-bima.webp';
-    var CW = 236, CH = 350, N = 7, SEG = 30;
+    var CW = 236, CH = 360, N = 7, SEG = 30;
     var W = 0, H = 0, dpr = 1, S = 1, seg = 30, ax = 0, ay = 0;
     var pts = [], ang = 0, angV = 0, flipT = 0, flipTo = 0, drag = null, raf = 0, visible = true;
     var cx = 0, cy = 0;
@@ -1212,27 +1246,34 @@
     }
     function front() {
       var g = ctx.createLinearGradient(-CW / 2, -CH / 2, CW / 2, CH / 2);
-      g.addColorStop(0, '#242a7a'); g.addColorStop(.55, '#0c1030'); g.addColorStop(1, '#0f4a5c');
+      g.addColorStop(0, '#262c80'); g.addColorStop(.55, '#0b0f2e'); g.addColorStop(1, '#0e4a5e');
       ctx.shadowColor = 'rgba(0,0,0,.5)'; ctx.shadowBlur = 30; ctx.shadowOffsetY = 16;
       rr(-CW / 2, -CH / 2, CW, CH, 24); ctx.fillStyle = g; ctx.fill(); ctx.shadowColor = 'transparent';
-      ctx.lineWidth = 1.5; ctx.strokeStyle = 'rgba(255,255,255,.22)'; ctx.stroke();
-      rr(-24, -CH / 2 + 12, 48, 9, 4.5); ctx.fillStyle = 'rgba(0,0,0,.55)'; ctx.fill();
-      ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.font = '800 10px Inter, Verdana, sans-serif'; ctx.textAlign = 'center';
-      ctx.fillText('DATA SCIENCE ID', 0, -CH / 2 + 40);
-      var y0 = -CH / 2 + 54, pw = 176, ph = 176;
-      ctx.save(); ctx.beginPath(); ctx.moveTo(-pw / 2, y0 + pw / 2); ctx.arc(0, y0 + pw / 2, pw / 2, Math.PI, 0);
-      ctx.lineTo(pw / 2, y0 + ph - 14); ctx.arcTo(pw / 2, y0 + ph, pw / 2 - 14, y0 + ph, 14); ctx.lineTo(-pw / 2 + 14, y0 + ph);
-      ctx.arcTo(-pw / 2, y0 + ph, -pw / 2, y0 + ph - 14, 14); ctx.closePath();
-      ctx.fillStyle = '#131a4a'; ctx.fill();
-      var ring = ctx.createLinearGradient(-pw / 2, y0, pw / 2, y0 + ph); ring.addColorStop(0, '#7c5cff'); ring.addColorStop(1, '#2dd4bf');
-      ctx.save(); ctx.clip(); if (photoOk) ctx.drawImage(photo, 0, 0, 760, 760, -pw / 2, y0, pw, ph); ctx.restore();
-      ctx.lineWidth = 3.5; ctx.strokeStyle = ring; ctx.stroke(); ctx.restore();
-      ctx.fillStyle = '#fff'; ctx.font = '800 25px Inter, Verdana, sans-serif'; ctx.fillText('Bima Sena', 0, y0 + ph + 36);
-      ctx.fillStyle = '#5eead4'; ctx.font = '700 12.5px Inter, Verdana, sans-serif'; ctx.fillText('Data Science · UNESA', 0, y0 + ph + 56);
-      ctx.fillStyle = 'rgba(255,255,255,.6)'; ctx.font = '600 11px Inter, Verdana, sans-serif'; ctx.fillText('S1 Sains Data · Surabaya', 0, y0 + ph + 74);
-      ctx.fillStyle = 'rgba(255,255,255,.72)'; bars(0, CH / 2 - 34, 16);
-      ctx.save(); ctx.translate(58, y0 + ph - 6); ctx.rotate(0.14); rr(-64, -12, 128, 24, 6); ctx.fillStyle = '#fbbf24'; ctx.fill();
-      ctx.fillStyle = '#3b2a00'; ctx.font = '800 10.5px Inter, Verdana, sans-serif'; ctx.fillText('Terbuka kolaborasi', 0, 4); ctx.restore();
+      var eg = ctx.createLinearGradient(-CW / 2, -CH / 2, CW / 2, CH / 2); eg.addColorStop(0, 'rgba(255,255,255,.45)'); eg.addColorStop(.5, 'rgba(255,255,255,.08)'); eg.addColorStop(1, 'rgba(94,234,212,.5)');
+      ctx.lineWidth = 1.5; ctx.strokeStyle = eg; ctx.stroke();
+      rr(-24, -CH / 2 + 11, 48, 8, 4); ctx.fillStyle = 'rgba(0,0,0,.55)'; ctx.fill();
+      var mk = ctx.createLinearGradient(0, 0, 22, 22); mk.addColorStop(0, '#5eead4'); mk.addColorStop(1, '#67e8f9');
+      ctx.save(); ctx.translate(-CW / 2 + 18, -CH / 2 + 30); rr(0, 0, 24, 24, 7); ctx.fillStyle = mk; ctx.fill();
+      ctx.fillStyle = '#06121f'; ctx.font = '900 11px Inter, Verdana, sans-serif'; ctx.textAlign = 'center'; ctx.fillText('BS', 12, 16); ctx.restore();
+      ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(255,255,255,.85)'; ctx.font = '800 9.5px Inter, Verdana, sans-serif'; ctx.fillText('DATA SCIENCE ID', -CW / 2 + 50, -CH / 2 + 46);
+      ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(255,255,255,.45)'; ctx.fillText('2026', CW / 2 - 18, -CH / 2 + 46);
+      var px = -CW / 2 + 18, pw = CW - 36, y0 = -CH / 2 + 66, ph = 178;
+      ctx.save(); rr(px, y0, pw, ph, 18); ctx.fillStyle = '#131a4a'; ctx.fill(); ctx.clip();
+      if (photoOk) ctx.drawImage(photo, 0, 30, 760, 720, px, y0, pw, ph);
+      var fade = ctx.createLinearGradient(0, y0 + ph - 78, 0, y0 + ph); fade.addColorStop(0, 'rgba(6,8,28,0)'); fade.addColorStop(1, 'rgba(6,8,28,.92)');
+      ctx.fillStyle = fade; ctx.fillRect(px, y0 + ph - 78, pw, 78); ctx.restore();
+      var ring = ctx.createLinearGradient(px, y0, px + pw, y0 + ph); ring.addColorStop(0, '#7c5cff'); ring.addColorStop(1, '#2dd4bf');
+      rr(px, y0, pw, ph, 18); ctx.lineWidth = 2.5; ctx.strokeStyle = ring; ctx.stroke();
+      ctx.textAlign = 'left'; ctx.fillStyle = '#fff'; ctx.font = '850 22px Inter, Verdana, sans-serif'; ctx.fillText('Bima Sena', px + 14, y0 + ph - 28);
+      ctx.fillStyle = '#5eead4'; ctx.font = '700 11.5px Inter, Verdana, sans-serif'; ctx.fillText('Data Science · UNESA', px + 14, y0 + ph - 11);
+      var cy2 = y0 + ph + 14;
+      rr(px, cy2, pw, 26, 13); ctx.fillStyle = 'rgba(45,212,191,.13)'; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(45,212,191,.5)'; ctx.stroke();
+      ctx.beginPath(); ctx.arc(px + 16, cy2 + 13, 3.6, 0, 6.3); ctx.fillStyle = '#5eead4'; ctx.fill();
+      ctx.fillStyle = '#c6f7ee'; ctx.font = '700 11px Inter, Verdana, sans-serif'; ctx.fillText('Terbuka untuk kolaborasi', px + 28, cy2 + 17);
+      var ly = cy2 + 48;
+      ctx.fillStyle = 'rgba(255,255,255,.42)'; ctx.font = '800 8.5px Inter, Verdana, sans-serif'; ctx.fillText('PROGRAM', px + 2, ly); ctx.fillText('LOKASI', px + pw / 2 + 8, ly);
+      ctx.fillStyle = '#fff'; ctx.font = '700 12px Inter, Verdana, sans-serif'; ctx.fillText('S1 Sains Data', px + 2, ly + 16); ctx.fillText('Surabaya', px + pw / 2 + 8, ly + 16);
+      ctx.fillStyle = 'rgba(255,255,255,.7)'; bars(0, CH / 2 - 26, 12);
     }
     function back() {
       var g = ctx.createLinearGradient(-CW / 2, -CH / 2, CW / 2, CH / 2);
@@ -1363,6 +1404,25 @@
       document.addEventListener('pointerleave', function () { mx = -9999; my = -9999; });
     }
     var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { build(); if (calm) frame(); }, 160); });
+  })();
+  </script>
+<script>
+  (function () {
+    var nav = document.querySelector('.nav-links'); if (!nav) return;
+    var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+    var ind = document.createElement('span'); ind.className = 'nav-indicator'; nav.insertBefore(ind, nav.firstChild);
+    var ids = links.map(function (a) { return a.getAttribute('href').slice(1); }), cur = 0;
+    function to(a) { if (!a || getComputedStyle(ind).position !== 'absolute' || window.innerWidth < 761) { ind.style.opacity = 0; return; } ind.style.opacity = 1; ind.style.left = a.offsetLeft + 'px'; ind.style.width = a.offsetWidth + 'px'; }
+    function spy() {
+      var y = window.innerHeight * 0.38, idx = 0;
+      ids.forEach(function (id, i) { var el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= y) idx = i; });
+      cur = idx; links.forEach(function (a, i) { a.classList.toggle('active', i === cur); }); to(links[cur]);
+    }
+    var t = 0; window.addEventListener('scroll', function () { if (!t) t = requestAnimationFrame(function () { t = 0; spy(); }); }, { passive: true });
+    window.addEventListener('resize', spy);
+    links.forEach(function (a) { a.addEventListener('mouseenter', function () { to(a); }); a.addEventListener('focus', function () { to(a); }); });
+    nav.addEventListener('mouseleave', function () { to(links[cur]); });
+    spy(); window.addEventListener('load', spy);
   })();
   </script>
 </body>
