@@ -650,6 +650,67 @@
     html[data-theme="dark"] .section-kicker { color: #5eead4 !important; }
     .section-heading h2::after { width: 44px; height: 3px; background: #2dd4bf; border-radius: 3px; }
     .js-anim .section-heading:not(.in) h2::after { width: 0; }
+  
+    /* ===== Hero nama, timeline, folder, nav biru ===== */
+    h1 .hero-hello { display: block; margin-bottom: 8px; color: #0d9488; font-size: 17px; font-weight: 700; letter-spacing: 0; }
+    html[data-theme="dark"] h1 .hero-hello { color: #5eead4; }
+    h1 { font-size: clamp(46px, 6vw, 76px); line-height: 1.04; }
+    .hero-role { margin: -2px 0 16px; color: var(--blue); font-size: 17px; font-weight: 800; }
+    .nav-indicator { border: 0 !important; background: linear-gradient(135deg, #4d6ef5, #7c5cff) !important; box-shadow: 0 0 28px rgba(92,110,245,.55) !important; }
+    .nav-links a.active { color: #fff !important; }
+    .section-heading { margin-bottom: 34px; }
+    /* timeline */
+    .tl-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+    .tl-heading { margin: 0 0 30px; font-size: 26px; letter-spacing: -.02em; }
+    .tl-list { position: relative; margin: 0; padding: 0; list-style: none; }
+    .tl-list::before { content: ""; position: absolute; left: 25px; top: 28px; bottom: 28px; width: 2px; background: var(--line); }
+    .tl-item { position: relative; display: block; padding: 0 0 34px 76px; opacity: .52; transition: opacity .35s ease; cursor: default; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item.active, .tl-item:hover { opacity: 1; }
+    .tl-num { position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 52px; height: 52px; border: 1px solid var(--line); border-radius: 50%; color: var(--muted); background: var(--white); font-size: 18px; font-weight: 800; transition: all .35s ease; }
+    .tl-item.active .tl-num, .tl-item:hover .tl-num { color: #0b0f2e; border-color: transparent; background: #fff; box-shadow: 0 0 0 6px color-mix(in srgb, var(--c) 22%, transparent), 0 0 26px color-mix(in srgb, var(--c) 55%, transparent); }
+    html:not([data-theme="dark"]) .tl-item.active .tl-num, html:not([data-theme="dark"]) .tl-item:hover .tl-num { color: #fff; background: var(--c); }
+    .tl-head { display: flex; align-items: center; gap: 14px; }
+    .tl-logo { display: grid; place-items: center; flex: 0 0 auto; width: 46px; height: 46px; border-radius: 13px; color: #fff; background: linear-gradient(135deg, var(--c), color-mix(in srgb, var(--c) 55%, #000)); font-size: 13px; font-weight: 800; }
+    .tl-org { flex: 1; min-width: 0; font-size: 17px; letter-spacing: -.01em; }
+    .tl-year { flex: 0 0 auto; padding: 6px 13px; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); background: color-mix(in srgb, var(--white) 70%, transparent); font-size: 12.5px; font-weight: 700; white-space: nowrap; }
+    .tl-title { margin: 14px 0 6px; font-size: 20px; line-height: 1.25; letter-spacing: -.02em; }
+    .tl-sub { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0; color: var(--muted); font-size: 13.5px; font-weight: 600; }
+    .tl-tag { padding: 5px 12px; border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); border-radius: 8px; color: var(--ink-soft); background: color-mix(in srgb, var(--c) 14%, transparent); font-size: 12.5px; font-weight: 700; }
+    @media (max-width: 860px) { .tl-cols { grid-template-columns: 1fr; gap: 40px; } .tl-year { display: none; } }
+    /* folder pintasan */
+    .folder-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 76px; }
+    .folder { position: relative; display: block; aspect-ratio: 1.3; color: var(--ink); text-decoration: none; transition: transform .45s cubic-bezier(.2,.8,.3,1.15), opacity .6s ease, filter .3s ease; }
+    .folder:hover { transform: translateY(-8px); filter: drop-shadow(0 22px 28px color-mix(in srgb, var(--c) 32%, transparent)); }
+    .folder-back { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .folder-back path { fill: color-mix(in srgb, var(--c) 16%, var(--white)); stroke: color-mix(in srgb, var(--c) 45%, transparent); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+    .paper { position: absolute; left: 8%; right: 8%; top: 17%; height: 62%; overflow: hidden; border-radius: 14px 14px 0 0; background: color-mix(in srgb, var(--c) 22%, #eef0ff); box-shadow: 0 -8px 22px rgba(0,0,0,.28); transition: transform .55s cubic-bezier(.2,.8,.3,1.15); }
+    .paper img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+    .paper.p2 { left: 15%; right: 3%; top: 24%; background: color-mix(in srgb, var(--c) 30%, #dfe3ff); transform: rotate(2.5deg); }
+    .paper.p1 { transform: rotate(-1deg); }
+    .folder:hover .p1 { transform: translateY(-26px) rotate(-2.5deg); }
+    .folder:hover .p2 { transform: translateY(-14px) rotate(5deg); }
+    .sheet-lines { display: block; width: 100%; height: 100%; background: repeating-linear-gradient(180deg, color-mix(in srgb, var(--c) 45%, transparent) 0 5px, transparent 5px 15px) 14px 18px / calc(100% - 28px) 70% no-repeat; }
+    .sheet-cert { display: grid; place-items: center; align-content: center; gap: 4px; width: 100%; height: 100%; color: #2a2f55; text-align: center; }
+    .sheet-cert b { font-size: 20px; letter-spacing: .04em; } .sheet-cert i { font-size: 11px; font-style: normal; font-weight: 700; letter-spacing: .08em; opacity: .7; }
+    .folder-front { position: absolute; left: 0; right: 0; bottom: 0; height: 50%; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding: 0 20px 18px; border: 1px solid color-mix(in srgb, var(--c) 40%, transparent); border-radius: 24px; background: linear-gradient(180deg, color-mix(in srgb, var(--c) 20%, var(--white)), color-mix(in srgb, var(--c) 9%, var(--white))); transition: transform .45s cubic-bezier(.2,.8,.3,1.15); }
+    .folder-front::before { content: ""; position: absolute; left: -1px; top: -19px; width: 40%; height: 20px; border: 1px solid color-mix(in srgb, var(--c) 40%, transparent); border-bottom: 0; border-radius: 14px 14px 0 0; background: color-mix(in srgb, var(--c) 20%, var(--white)); }
+    .folder:hover .folder-front { transform: translateY(5px); }
+    .folder-text { display: grid; gap: 2px; }
+    .folder-text .stat-num { font-size: 46px; font-weight: 850; line-height: 1; letter-spacing: -.04em; }
+    .folder-label { font-size: 15px; font-weight: 800; }
+    .folder-go { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid color-mix(in srgb, var(--c) 50%, transparent); border-radius: 16px; color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); transition: transform .35s ease, background .35s ease, color .35s ease; }
+    .folder:hover .folder-go { transform: rotate(45deg) scale(1.08); color: #fff; background: var(--c); }
+    .js-anim .folder:not(.in) { opacity: 0; transform: translateY(26px); }
+    @media (max-width: 860px) { .folder-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 48px; } .folder-text .stat-num { font-size: 34px; } .folder-go { width: 40px; height: 40px; } }
+    @media (prefers-reduced-motion: reduce) { .folder, .paper, .folder-front { transition: none; } }
+  
+    .paper.p1 { top: 12%; height: 68%; }
+    .paper.p2 { top: 33%; left: 20%; right: 2%; transform: rotate(3deg); }
+    .folder:hover .p2 { transform: translateY(-12px) rotate(6deg); }
+  
+    section[id] { scroll-margin-top: 96px; }
+    .sheet-cert { align-content: start; padding-top: 16px; }
   </style>
 </head>
 <body>
@@ -662,7 +723,7 @@
       <nav class="nav-links" id="site-nav" aria-label="Navigasi utama">
         <a href="#home">Beranda</a>
         <a href="#about">Tentang</a>
-        <a href="#journey">Perjalanan</a>
+        <a href="#journey">Pendidikan</a>
         <a href="#projects">Proyek</a>
         <a href="#skills">Keahlian</a>
         <a href="#contact">Kontak</a>
@@ -681,30 +742,31 @@
         <div class="hero-grid">
           <div class="fade-up">
             <div class="eyebrow"><span class="eyebrow-dot"></span> Mahasiswa Sains Data · UNESA</div>
-            <h1>Mengubah data menjadi <span class="accent-text">insight</span> yang berdampak.</h1>
-            <p class="hero-copy">Halo, saya <strong>Bima Sena</strong>. Saya berfokus pada <strong>Data Analytics, Machine Learning,</strong> dan visualisasi data—membangun solusi berbasis data mulai dari forecasting hingga klasifikasi dan dashboard interaktif.</p>
+            <h1><span class="hero-hello">Halo, saya</span>Bima Sena</h1>
+            <p class="hero-role">Data Science Student</p>
+            <p class="hero-copy">Mahasiswa S1 Sains Data Universitas Negeri Surabaya yang berfokus pada Data Analytics dan Machine Learning. Saya membangun dashboard interaktif, model forecasting, serta klasifikasi teks dan citra, dari pengolahan data hingga hasil yang bisa dipakai.</p>
             <div class="hero-actions">
-              <a class="button button-primary" href="#projects">Jelajahi Proyek <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a class="button button-primary" href="#projects">Lihat Proyek <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
               <a class="button button-light" href="CV_Bima_Sena.pdf" download>Unduh CV <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
             <div class="hero-location"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg> Surabaya, Indonesia <span aria-hidden="true">·</span> S1 Sains Data, semester 5</div>
           </div>
           <div class="visual-wrap fade-up" style="animation-delay:.1s"><div class="lanyard-stage" id="lanyard-stage"><canvas id="lanyard-canvas" role="img" aria-label="Kartu ID interaktif Bima Sena, bisa ditarik dan diklik untuk dibalik"></canvas><span class="lanyard-hint">Tarik kartunya · klik untuk membalik</span></div></div>
         </div>
-        <div class="stat-grid" aria-label="Ringkasan profil"><div class="stat-card" style="--c:#7c6cff"><div class="stat-top"><span class="stat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></span><span class="stat-num">6</span></div><strong class="stat-title">Proyek</strong><span class="stat-desc">Karya data dan machine learning</span></div><div class="stat-card" style="--c:#2dd4bf"><div class="stat-top"><span class="stat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span><span class="stat-num">3</span></div><strong class="stat-title">Dashboard</strong><span class="stat-desc">Visualisasi yang bisa dicoba</span></div><div class="stat-card" style="--c:#fbbf24"><div class="stat-top"><span class="stat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16M10 14.7V17c0 .6-.5 1-1.2 1.2C7.8 18.8 7 20.2 7 22M14 14.7V17c0 .6.5 1 1.2 1.2 1 .6 1.8 2 1.8 3.8"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span><span class="stat-num">1</span></div><strong class="stat-title">Penghargaan</strong><span class="stat-desc">Juara 2 UI/UX DIMASTI nasional</span></div><div class="stat-card" style="--c:#f472b6"><div class="stat-top"><span class="stat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span class="stat-num">1</span></div><strong class="stat-title">Bootcamp</strong><span class="stat-desc">CAMP Data Analyst & BI, berjalan</span></div></div>
+        <div class="folder-grid" aria-label="Pintasan"><a class="folder" href="#projects" style="--c:#7c6cff" aria-label="6 proyek, lihat daftar proyek"><svg class="folder-back" viewBox="0 0 480 340" preserveAspectRatio="none" aria-hidden="true"><path d="M22 58C22 46 30 38 42 38H196C214 38 224 32 236 22C246 12 256 8 270 8H438C450 8 458 16 458 28V310C458 322 450 330 438 330H42C30 330 22 322 22 310Z"/></svg><span class="paper p1"><img src="assets/export-finder.webp" alt="" loading="lazy" width="1300" height="656"></span><span class="paper p2"><span class="sheet-lines"></span></span><span class="folder-front"><span class="folder-text"><strong class="stat-num">6</strong><span class="folder-label">Proyek</span></span><span class="folder-go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></span></a><a class="folder" href="#projects" style="--c:#2dd4bf" aria-label="3 dashboard, lihat daftar proyek"><svg class="folder-back" viewBox="0 0 480 340" preserveAspectRatio="none" aria-hidden="true"><path d="M22 58C22 46 30 38 42 38H196C214 38 224 32 236 22C246 12 256 8 270 8H438C450 8 458 16 458 28V310C458 322 450 330 438 330H42C30 330 22 322 22 310Z"/></svg><span class="paper p1"><img src="assets/export-finder.webp" alt="" loading="lazy" width="1300" height="656"></span><span class="paper p2"><span class="sheet-lines"></span></span><span class="folder-front"><span class="folder-text"><strong class="stat-num">3</strong><span class="folder-label">Dashboard</span></span><span class="folder-go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></span></a><a class="folder" href="#journey" style="--c:#fbbf24" aria-label="1 penghargaan, lihat pengalaman"><svg class="folder-back" viewBox="0 0 480 340" preserveAspectRatio="none" aria-hidden="true"><path d="M22 58C22 46 30 38 42 38H196C214 38 224 32 236 22C246 12 256 8 270 8H438C450 8 458 16 458 28V310C458 322 450 330 438 330H42C30 330 22 322 22 310Z"/></svg><span class="paper p1"><span class="sheet-cert"><b>JUARA 2</b><i>UI/UX · DIMASTI</i></span></span><span class="paper p2"><span class="sheet-lines"></span></span><span class="folder-front"><span class="folder-text"><strong class="stat-num">1</strong><span class="folder-label">Penghargaan</span></span><span class="folder-go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></span></a><a class="folder" href="#journey" style="--c:#f472b6" aria-label="1 bootcamp, lihat pendidikan"><svg class="folder-back" viewBox="0 0 480 340" preserveAspectRatio="none" aria-hidden="true"><path d="M22 58C22 46 30 38 42 38H196C214 38 224 32 236 22C246 12 256 8 270 8H438C450 8 458 16 458 28V310C458 322 450 330 438 330H42C30 330 22 322 22 310Z"/></svg><span class="paper p1"><span class="sheet-cert"><b>CAMP</b><i>Data Analyst &amp; BI</i></span></span><span class="paper p2"><span class="sheet-lines"></span></span><span class="folder-front"><span class="folder-text"><strong class="stat-num">1</strong><span class="folder-label">Bootcamp</span></span><span class="folder-go"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></span></a></div>
       </div>
     </section>
 
     <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Python</span><span>R</span><span>SQL</span><span>Streamlit</span><span>DuckDB</span><span>Neo4j</span><span>SARIMAX</span><span>LSTM</span><span>SVM</span><span>TF-IDF</span><span>Logistic Regression</span><span>K-Means</span><span>PCA</span><span>Gravity Model</span><span>Time Series</span><span>Computer Vision</span><span>NLP</span><span>Dashboard</span><span>Python</span><span>R</span><span>SQL</span><span>Streamlit</span><span>DuckDB</span><span>Neo4j</span><span>SARIMAX</span><span>LSTM</span><span>SVM</span><span>TF-IDF</span><span>Logistic Regression</span><span>K-Means</span><span>PCA</span><span>Gravity Model</span><span>Time Series</span><span>Computer Vision</span><span>NLP</span><span>Dashboard</span></div></div>
     <section id="about">
       <div class="container">
-        <div class="section-heading"><div><p class="section-kicker">01 / Tentang saya</p><h2>Suka mencari pola<br>di balik angka.</h2></div></div>
+        <div class="section-heading"><div><h2>Tentang Saya</h2></div></div>
         <div class="about-grid">
-          <article class="about-card dark"><div class="mini-label"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 14.8 8.7 21 9.6l-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg> Profil singkat</div><h3>Membuat data lebih bermakna dan mudah ditindaklanjuti.</h3><p>Mahasiswa S1 Sains Data Universitas Negeri Surabaya yang tertarik pada pengembangan model prediktif, analisis statistik, dan visualisasi untuk menjembatani data dengan keputusan.</p></article>
-          <article class="about-card about-detail"><div class="mini-label"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 2.5 8 12 13l9.5-5L12 3ZM5 10v6l7 4 7-4v-6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg> Cara saya bekerja</div><h3>Eksplorasi, eksperimen, evaluasi, lalu komunikasikan.</h3><p>Dengan Python dan R, saya mengeksplorasi data, membangun serta membandingkan model, dan menyusun dashboard interaktif agar temuan analisis bisa dikomunikasikan dengan jelas. Saya juga terus mengembangkan kemampuan problem solving dan kolaborasi melalui proyek, organisasi, serta kegiatan mahasiswa.</p>
+          <article class="about-card dark"><div class="mini-label"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 14.8 8.7 21 9.6l-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg> Profil</div><h3>S1 Sains Data, UNESA</h3><p>Berfokus pada pengembangan model prediktif, analisis statistik, dan visualisasi data untuk mendukung keputusan.</p></article>
+          <article class="about-card about-detail"><div class="mini-label"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 2.5 8 12 13l9.5-5L12 3ZM5 10v6l7 4 7-4v-6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg> Pendekatan</div><h3>Cara kerja</h3><p>Menjelajahi data, membangun dan mengevaluasi model, lalu menyajikannya lewat dashboard dan laporan yang mudah dipahami.</p>
             <div class="about-points">
               <div class="about-point"><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Berbasis bukti</strong><span>Menguji model dengan metrik evaluasi.</span></div></div>
-              <div class="about-point"><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Berorientasi pengguna</strong><span>Memperhatikan kejelasan insight dan visualisasi.</span></div></div>
+              <div class="about-point"><span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Berorientasi pengguna</strong><span>Insight dan visualisasi yang jelas.</span></div></div>
             </div>
           </article>
         </div>
@@ -713,30 +775,15 @@
 
     <section class="journey-section" id="journey">
       <div class="container">
-        <div class="section-heading"><div><p class="section-kicker">02 / Pendidikan & pengalaman</p><h2>Terus belajar, sambil ikut bergerak.</h2></div></div>
-        <div class="journey-grid">
-          <article class="journey-card">
-            <div class="journey-card-header"><div><h3>Pendidikan</h3><p>Fondasi akademik dan pengembangan kompetensi.</p></div><span class="journey-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 10 5-10 5L2 8l10-5ZM6 10v6l6 3 6-3v-6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span></div>
-            <div class="timeline">
-              <div class="timeline-item"><h4>Universitas Negeri Surabaya</h4><span class="timeline-meta">Agustus 2024 – Sekarang · S1 Sains Data</span><p>IPK 3,61. Mata kuliah pendukung meliputi Machine Learning, Data Mining, Data Warehouse, Statistika, Big Data, Deep Learning, Calculus, dan Data Visualization.</p></div>
-              <div class="timeline-item"><h4><button class="timeline-link" type="button" data-open-camp aria-haspopup="dialog">Celerates Acceleration Mastery Program (CAMP) <span aria-hidden="true">›</span></button></h4><span class="timeline-meta">Bootcamp Data Analyst & Business Intelligence · Batch 5 · Agustus – Desember 2026 (sedang berjalan)</span><p>Belajar database dan SQL, data warehouse dan ETL, storytelling with data, visualisasi (Tableau dan Power BI), hingga final project. Klik judul untuk melihat detail dan sertifikat.</p></div>
-            </div>
-            <div class="award-box"><span class="award-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 21h8m-4-4v4M7 4h10v5a5 5 0 0 1-10 0V4ZM7 6H4v2a4 4 0 0 0 4 4m9-6h3v2a4 4 0 0 1-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Juara 2 Kompetisi UI/UX DIMASTI tingkat nasional</strong><span>Diselenggarakan oleh FMIPA Universitas Nasional; merancang aplikasi interaktif dengan fokus pada pengalaman pengguna dan fungsionalitas.</span></div></div>
-          </article>
-          <article class="journey-card">
-            <div class="journey-card-header"><div><h3>Organisasi & kontribusi</h3><p>Kolaborasi, komunikasi, dan dampak sosial.</p></div><span class="journey-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m7-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7-7.5a4 4 0 0 1 0 7.8m6 9.7v-2a4 4 0 0 0-3-3.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-            <div class="timeline">
-              <div class="timeline-item"><h4>Organisasi Pusat Penguatan Karakter</h4><span class="timeline-meta">Koordinator Divisi Kewirausahaan</span><p>Mengelola program kewirausahaan mahasiswa dan mendukung webinar nasionalisme, kegiatan sosial, personal branding, serta partisipasi PMW dan kompetisi nasional.</p></div>
-              <div class="timeline-item"><h4>Pekan Raya Mahasiswa</h4><span class="timeline-meta">Panitia · Media & Public Relations</span><p>Menangani peliputan, dokumentasi, perizinan, dan koordinasi eksternal pada rangkaian acara yang diikuti lebih dari 10.000 mahasiswa.</p></div>
-              <div class="timeline-item"><h4>Pengabdian Masyarakat FUN – FMIPA UNESA</h4><span class="timeline-meta">Juni – Juli 2026 · Desa Sambeng, Lamongan</span><p>Program lintas bidang selama 7 hari: sosialisasi UMKM, pengelolaan sampah, dan peternakan; mengajar siswa SD, menyusun modul ajar, serta kegiatan sosial bersama warga.</p></div>
-            </div>
-          </article>
+        <div class="tl-cols">
+          <div class="tl-col"><h3 class="tl-heading">Pendidikan</h3><ol class="tl-list"><li class="tl-item active" style="--c:#7c6cff"><span class="tl-num">1</span><div class="tl-body"><div class="tl-head"><span class="tl-logo">UN</span><strong class="tl-org">Universitas Negeri Surabaya</strong><span class="tl-year">2024 – Sekarang</span></div><h4 class="tl-title">S1 Sains Data</h4><p class="tl-sub">FMIPA UNESA · IPK 3,61<span class="tl-tag">Sarjana</span></p></div></li><li class="tl-item" style="--c:#2dd4bf"><span class="tl-num">2</span><div class="tl-body"><div class="tl-head"><span class="tl-logo">CA</span><strong class="tl-org">Celerates Acceleration Mastery Program</strong><span class="tl-year">Agu – Des 2026</span></div><h4 class="tl-title"><button class="timeline-link" type="button" data-open-camp aria-haspopup="dialog">Data Analyst &amp; Business Intelligence (Batch 5) <span aria-hidden="true">›</span></button></h4><p class="tl-sub">Studi Independen Mandiri<span class="tl-tag">Bootcamp</span></p></div></li><li class="tl-item" style="--c:#f472b6"><span class="tl-num">3</span><div class="tl-body"><div class="tl-head"><span class="tl-logo">SM</span><strong class="tl-org">SMK Negeri 1 Lamongan</strong><span class="tl-year">Lulus 2024</span></div><h4 class="tl-title">Teknik Kelistrikan</h4><p class="tl-sub">Sekolah Menengah Kejuruan<span class="tl-tag">SMK</span></p></div></li></ol></div>
+          <div class="tl-col"><h3 class="tl-heading">Pengalaman</h3><ol class="tl-list"><li class="tl-item active" style="--c:#7c6cff"><span class="tl-num">1</span><div class="tl-body"><div class="tl-head"><span class="tl-logo">PK</span><strong class="tl-org">Organisasi Pusat Penguatan Karakter</strong></div><h4 class="tl-title">Koordinator Divisi Kewirausahaan</h4><p class="tl-sub">UNESA<span class="tl-tag">Organisasi</span></p></div></li><li class="tl-item" style="--c:#2dd4bf"><span class="tl-num">2</span><div class="tl-body"><div class="tl-head"><span class="tl-logo">PR</span><strong class="tl-org">Pekan Raya Mahasiswa</strong></div><h4 class="tl-title">Panitia Media & Public Relations</h4><p class="tl-sub">UNESA<span class="tl-tag">Kepanitiaan</span></p></div></li><li class="tl-item" style="--c:#fbbf24"><span class="tl-num">3</span><div class="tl-body"><div class="tl-head"><span class="tl-logo">FU</span><strong class="tl-org">Pengabdian Masyarakat FUN</strong><span class="tl-year">Jun – Jul 2026</span></div><h4 class="tl-title">Desa Sambeng, Lamongan</h4><p class="tl-sub">FMIPA UNESA<span class="tl-tag">Pengabdian</span></p></div></li><li class="tl-item" style="--c:#f472b6"><span class="tl-num">4</span><div class="tl-body"><div class="tl-head"><span class="tl-logo">DM</span><strong class="tl-org">Kompetisi UI/UX DIMASTI</strong></div><h4 class="tl-title">Juara 2 Tingkat Nasional</h4><p class="tl-sub">FMIPA Universitas Nasional<span class="tl-tag">Penghargaan</span></p></div></li></ol></div>
         </div>
       </div>
     </section>
     <section class="projects-section" id="projects">
       <div class="container">
-        <div class="section-heading"><div><p class="section-kicker">03 / Proyek pilihan</p><h2>Yang sudah saya bangun.</h2></div></div>
+        <div class="section-heading"><div><h2>Proyek</h2></div></div>
         <div class="filters" role="group" aria-label="Filter kategori proyek">
           <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">Semua proyek</button>
           <button class="filter-btn" type="button" data-filter="forecasting" aria-pressed="false">Forecasting</button>
@@ -803,17 +850,17 @@
 
     <section id="skills">
       <div class="container">
-        <div class="section-heading"><div><p class="section-kicker">04 / Keahlian</p><h2>Alat yang saya pakai.</h2></div></div>
+        <div class="section-heading"><div><h2>Keahlian</h2></div></div>
         <div class="skills-grid">
-          <article class="skills-intro"><div class="mini-label"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Skill stack</div><h3>Teknis, analitis, dan komunikatif.</h3><p>Fokus saya adalah menghubungkan pemodelan dengan kebutuhan analisis, lalu menyampaikan temuan lewat visualisasi yang mudah dimengerti.</p><div class="skills-callout"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> Fokus: Data Analytics & Machine Learning</div><div class="learning"><span class="learning-label">Sedang saya dalami</span><div class="learning-tags"><span>Business Intelligence</span><span>Data Warehouse & ETL</span><span>Graph Data Science</span><span>IndoBERT</span></div></div></article>
+          <article class="skills-intro"><div class="mini-label"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Keahlian utama</div><h3>Data Analytics & Machine Learning</h3><p>Menghubungkan pemodelan dengan kebutuhan analisis, lalu menyampaikan temuan lewat visualisasi.</p><div class="learning"><span class="learning-label">Sedang saya dalami</span><div class="learning-tags"><span>Business Intelligence</span><span>Data Warehouse & ETL</span><span>Graph Data Science</span><span>IndoBERT</span></div></div></article>
           <div class="skill-groups">
-            <article class="skill-group"><h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Bahasa & tools</h4><div class="skill-pills"><span class="skill-pill highlight">Python</span><span class="skill-pill highlight">R (Statistik)</span><span class="skill-pill highlight">SQL</span><span class="skill-pill">Streamlit</span><span class="skill-pill">DuckDB</span><span class="skill-pill">Neo4j</span><span class="skill-pill">GitHub</span></div></article>
+            <article class="skill-group"><h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Bahasa pemrograman</h4><div class="skill-pills"><span class="skill-pill highlight">Python</span><span class="skill-pill highlight">R (Statistik)</span><span class="skill-pill highlight">SQL</span></div></article>
             <article class="skill-group"><h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V5m0 14h17M8 15l4-5 3 3 5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Analisis & visualisasi</h4><div class="skill-pills"><span class="skill-pill">Data Analysis</span><span class="skill-pill">Data Visualization</span><span class="skill-pill">Interactive Dashboard</span><span class="skill-pill">Data Mining</span></div></article>
             <article class="skill-group"><h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 4 7v5c0 4.5 3.4 7.6 8 9 4.6-1.4 8-4.5 8-9V7l-8-4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.5 12 2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Machine learning</h4><div class="skill-pills"><span class="skill-pill highlight">Classification</span><span class="skill-pill">Regression</span><span class="skill-pill">Forecasting</span><span class="skill-pill">Clustering</span><span class="skill-pill">Computer Vision</span><span class="skill-pill">NLP</span></div></article>
             <article class="skill-group"><h4><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8m0-12.8L5.6 18.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Soft skills</h4><div class="skill-pills"><span class="skill-pill">Analytical Thinking</span><span class="skill-pill">Problem Solving</span><span class="skill-pill">Communication</span></div></article>
           </div>
         </div>
-      <div class="toolbelt"><div class="toolbelt-head"><span>Tool belt</span><small>Yang saya pakai, dan di mana</small></div><div class="toolbelt-grid"><div class="tool" style="--c:#7c6cff;--k:0"><span class="tool-mark">Py</span><span class="tool-name">Python</span><span class="tool-use">Semua proyek</span></div><div class="tool" style="--c:#2dd4bf;--k:1"><span class="tool-mark">R</span><span class="tool-name">R</span><span class="tool-use">Statistik dan analisis data</span></div><div class="tool" style="--c:#f472b6;--k:2"><span class="tool-mark">SQL</span><span class="tool-name">SQL</span><span class="tool-use">Query dan data warehouse</span></div><div class="tool" style="--c:#fbbf24;--k:3"><span class="tool-mark">St</span><span class="tool-name">Streamlit</span><span class="tool-use">Export Finder, Forecasting</span></div><div class="tool" style="--c:#a78bfa;--k:4"><span class="tool-mark">Dk</span><span class="tool-name">DuckDB</span><span class="tool-use">Olah data BACI skala besar</span></div><div class="tool" style="--c:#2dd4bf;--k:5"><span class="tool-mark">N4</span><span class="tool-name">Neo4j</span><span class="tool-use">Rekomendasi graf RetailRocket</span></div><div class="tool" style="--c:#7c6cff;--k:6"><span class="tool-mark">Jp</span><span class="tool-name">Jupyter</span><span class="tool-use">Eksplorasi dan modeling</span></div><div class="tool" style="--c:#2dd4bf;--k:7"><span class="tool-mark">GH</span><span class="tool-name">GitHub</span><span class="tool-use">Semua repositori proyek</span></div><div class="tool" style="--c:#f472b6;--k:8"><span class="tool-mark">Tb</span><span class="tool-name">Tableau</span><span class="tool-use">Sedang dipelajari di CAMP</span></div><div class="tool" style="--c:#fbbf24;--k:9"><span class="tool-mark">BI</span><span class="tool-name">Power BI</span><span class="tool-use">Sedang dipelajari di CAMP</span></div></div></div>
+      <div class="toolbelt"><div class="toolbelt-head"><span>Tools</span></div><div class="toolbelt-grid"><div class="tool" style="--c:#7c6cff;--k:0"><span class="tool-mark">Py</span><span class="tool-name">Python</span><span class="tool-use">Semua proyek</span></div><div class="tool" style="--c:#2dd4bf;--k:1"><span class="tool-mark">R</span><span class="tool-name">R</span><span class="tool-use">Statistik dan analisis data</span></div><div class="tool" style="--c:#f472b6;--k:2"><span class="tool-mark">SQL</span><span class="tool-name">SQL</span><span class="tool-use">Query dan data warehouse</span></div><div class="tool" style="--c:#fbbf24;--k:3"><span class="tool-mark">St</span><span class="tool-name">Streamlit</span><span class="tool-use">Export Finder, Forecasting</span></div><div class="tool" style="--c:#a78bfa;--k:4"><span class="tool-mark">Dk</span><span class="tool-name">DuckDB</span><span class="tool-use">Olah data BACI skala besar</span></div><div class="tool" style="--c:#2dd4bf;--k:5"><span class="tool-mark">N4</span><span class="tool-name">Neo4j</span><span class="tool-use">Rekomendasi graf RetailRocket</span></div><div class="tool" style="--c:#7c6cff;--k:6"><span class="tool-mark">Jp</span><span class="tool-name">Jupyter</span><span class="tool-use">Eksplorasi dan modeling</span></div><div class="tool" style="--c:#2dd4bf;--k:7"><span class="tool-mark">GH</span><span class="tool-name">GitHub</span><span class="tool-use">Semua repositori proyek</span></div><div class="tool" style="--c:#f472b6;--k:8"><span class="tool-mark">Tb</span><span class="tool-name">Tableau</span><span class="tool-use">Sedang dipelajari di CAMP</span></div><div class="tool" style="--c:#fbbf24;--k:9"><span class="tool-mark">BI</span><span class="tool-name">Power BI</span><span class="tool-use">Sedang dipelajari di CAMP</span></div></div></div>
       </div>
     </section>
 
@@ -822,7 +869,7 @@
     <section class="contact-section" id="contact">
       <div class="container">
         <div class="contact-panel">
-          <div class="contact-copy"><p class="section-kicker">05 / Mari terhubung</p><h2>Punya ide atau proyek berbasis data?</h2><p>Saya terbuka untuk diskusi, kolaborasi, dan kesempatan belajar maupun berkontribusi di bidang data analytics dan machine learning.</p></div>
+          <div class="contact-copy"><h2>Kontak</h2><p>Terbuka untuk diskusi dan kolaborasi.</p></div>
           <div class="contact-list">
             <a class="contact-link" href="mailto:bimasena1412@gmail.com"><span class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span>Email</span><strong>bimasena1412@gmail.com</strong></div></a>
             <a class="contact-link" href="tel:+6285604196931"><span class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 16.5v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 10.2 18a19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 1.9 3.2 2 2 0 0 1 3.9 1h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.8L7 9.3a16 16 0 0 0 6 6l1.8-1.8a2 2 0 0 1 1.8-.6l3 .5a2 2 0 0 1 1.4 3.1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span>Telepon</span><strong>+62 856-0419-6931</strong></div></a>
@@ -1260,7 +1307,7 @@
     function front() {
       var g = ctx.createLinearGradient(-CW / 2, -CH / 2, CW / 2, CH / 2);
       g.addColorStop(0, '#262c80'); g.addColorStop(.55, '#0b0f2e'); g.addColorStop(1, '#0e4a5e');
-      ctx.shadowColor = 'rgba(0,0,0,.5)'; ctx.shadowBlur = 30; ctx.shadowOffsetY = 16;
+      ctx.shadowColor = 'rgba(0,0,0,.5)'; ctx.shadowBlur = 16; ctx.shadowOffsetY = 10;
       rr(-CW / 2, -CH / 2, CW, CH, 24); ctx.fillStyle = g; ctx.fill(); ctx.shadowColor = 'transparent';
       var eg = ctx.createLinearGradient(-CW / 2, -CH / 2, CW / 2, CH / 2); eg.addColorStop(0, 'rgba(255,255,255,.45)'); eg.addColorStop(.5, 'rgba(255,255,255,.08)'); eg.addColorStop(1, 'rgba(94,234,212,.5)');
       ctx.lineWidth = 1.5; ctx.strokeStyle = eg; ctx.stroke();
@@ -1291,7 +1338,7 @@
     function back() {
       var g = ctx.createLinearGradient(-CW / 2, -CH / 2, CW / 2, CH / 2);
       g.addColorStop(0, '#123a52'); g.addColorStop(.5, '#0c1030'); g.addColorStop(1, '#2d2278');
-      ctx.shadowColor = 'rgba(0,0,0,.5)'; ctx.shadowBlur = 30; ctx.shadowOffsetY = 16;
+      ctx.shadowColor = 'rgba(0,0,0,.5)'; ctx.shadowBlur = 16; ctx.shadowOffsetY = 10;
       rr(-CW / 2, -CH / 2, CW, CH, 24); ctx.fillStyle = g; ctx.fill(); ctx.shadowColor = 'transparent';
       ctx.lineWidth = 1.5; ctx.strokeStyle = 'rgba(255,255,255,.22)'; ctx.stroke();
       rr(-24, -CH / 2 + 12, 48, 9, 4.5); ctx.fillStyle = 'rgba(0,0,0,.55)'; ctx.fill();
@@ -1436,6 +1483,24 @@
     links.forEach(function (a) { a.addEventListener('mouseenter', function () { to(a); }); a.addEventListener('focus', function () { to(a); }); });
     nav.addEventListener('mouseleave', function () { to(links[cur]); });
     spy(); window.addEventListener('load', spy);
+  })();
+  </script>
+<script>
+  (function () {
+    var items = document.querySelectorAll('.tl-item');
+    document.querySelectorAll('.tl-list').forEach(function (list) {
+      var rows = list.querySelectorAll('.tl-item');
+      rows.forEach(function (row) {
+        row.addEventListener('mouseenter', function () { rows.forEach(function (r) { r.classList.remove('active'); }); row.classList.add('active'); });
+      });
+    });
+    var folders = document.querySelectorAll('.folder');
+    if ('IntersectionObserver' in window) {
+      var fio = new IntersectionObserver(function (l) {
+        l.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); fio.unobserve(e.target); } });
+      }, { threshold: 0.2 });
+      folders.forEach(function (f, i) { f.style.transitionDelay = (i * 110) + 'ms'; fio.observe(f); setTimeout(function () { f.style.transitionDelay = ''; }, 1500 + i * 110); });
+    } else { folders.forEach(function (f) { f.classList.add('in'); }); }
   })();
   </script>
 </body>
