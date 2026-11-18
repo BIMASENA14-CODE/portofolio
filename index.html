@@ -176,63 +176,114 @@
       color: var(--dark-ink);
     }
 
-    /* Act 1: Dimensional Night-Mountain Scrollytelling Hero */
-    .hero-scene {
+    /* Act 1: Pinned "Living Data Horizon" Scrollytelling Hero (210vh track) */
+    .hero-track {
       position: relative;
+      height: 210svh;
+    }
+    .hero-scene {
+      position: sticky;
+      top: 0;
       height: 100svh;
-      min-height: 620px;
-      max-height: 960px;
+      min-height: 600px;
       overflow: hidden;
       display: grid;
       place-items: center;
-      background: linear-gradient(180deg, #071124 0%, #142C4C 48%, #26486B 76%, #060A13 100%);
+      background:
+        radial-gradient(ellipse 80% 55% at 50% 62%, rgba(29, 99, 237, 0.24), transparent 70%),
+        radial-gradient(ellipse 55% 38% at 50% 72%, rgba(56, 189, 248, 0.16), transparent 68%),
+        linear-gradient(180deg, #040812 0%, #09152B 52%, #0D2142 78%, #060A13 100%);
     }
-    .hero-sky-glow {
+    #hero-data-canvas {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse 65% 42% at 50% 48%, rgba(148, 197, 248, 0.30), transparent 70%),
-        radial-gradient(circle at 20% 22%, rgba(255, 255, 255, 0.08) 0 1px, transparent 1.5px),
-        radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.09) 0 1px, transparent 1.5px),
-        radial-gradient(circle at 62% 30%, rgba(255, 255, 255, 0.06) 0 1px, transparent 1.5px);
-      pointer-events: none;
-    }
-    .hero-plane {
-      position: absolute;
-      left: 0;
-      right: 0;
-      pointer-events: none;
-      will-change: transform;
-    }
-    .hero-plane--peaks {
-      bottom: 8%;
-      z-index: 2;
       width: 100%;
-    }
-    .hero-plane--peaks svg,
-    .hero-plane--ridge svg {
+      height: 100%;
+      z-index: 1;
       display: block;
-      width: 100%;
-      height: auto;
+      pointer-events: none;
     }
+    .hero-hud {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .hud-coord {
+      position: absolute;
+      top: 96px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(148, 163, 184, 0.55);
+    }
+    .hud-coord--left { left: max(28px, calc(50% - 570px)); }
+    .hud-coord--right { right: max(28px, calc(50% - 570px)); }
+
+    /* Floating glass data telemetry chips that parallax apart on scroll */
+    .hud-chip {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 15px;
+      border-radius: 14px;
+      background: rgba(13, 22, 42, 0.62);
+      border: 1px solid rgba(148, 197, 255, 0.20);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+      will-change: transform, opacity;
+    }
+    .hud-chip-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #38BDF8;
+      box-shadow: 0 0 12px #38BDF8;
+    }
+    .hud-chip-dot.emerald { background: #34D399; box-shadow: 0 0 12px #34D399; }
+    .hud-chip-dot.amber { background: #FBBF24; box-shadow: 0 0 12px #FBBF24; }
+    .hud-chip strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.1;
+    }
+    .hud-chip span {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #94A3B8;
+      margin-top: 2px;
+    }
+    .hud-chip--1 { left: max(32px, calc(50% - 560px)); top: 27%; }
+    .hud-chip--2 { right: max(32px, calc(50% - 560px)); top: 24%; }
+    .hud-chip--3 { left: max(56px, calc(50% - 500px)); bottom: 25%; }
+    .hud-chip--4 { right: max(56px, calc(50% - 500px)); bottom: 27%; }
+
     .hero-title-wrap {
       position: relative;
       z-index: 3;
       text-align: center;
       padding: 0 20px;
-      margin-top: -6vh;
+      will-change: transform, opacity;
     }
     .hero-kicker {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 14px;
-      padding: 6px 14px;
+      margin-bottom: 16px;
+      padding: 7px 15px;
       border-radius: 999px;
-      background: rgba(6, 10, 19, 0.48);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      -webkit-backdrop-filter: blur(8px);
-      backdrop-filter: blur(8px);
+      background: rgba(10, 18, 36, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.30);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -247,33 +298,83 @@
     .hero-display {
       margin: 0;
       font-family: var(--font-display);
-      font-size: clamp(38px, 7.2vw, 96px);
+      font-size: clamp(38px, 7.2vw, 94px);
       font-weight: 700;
       line-height: 0.96;
       letter-spacing: -0.03em;
       text-transform: uppercase;
       color: #FFFFFF;
-      text-shadow: 0 14px 42px rgba(6, 10, 19, 0.55);
+      text-shadow: 0 18px 50px rgba(4, 8, 18, 0.75);
     }
     .hero-sub {
-      margin: 16px auto 0;
-      max-width: 520px;
+      margin: 18px auto 0;
+      max-width: 540px;
       font-size: clamp(14px, 1.4vw, 17px);
       font-weight: 500;
-      color: rgba(241, 245, 249, 0.86);
-      text-shadow: 0 4px 18px rgba(6, 10, 19, 0.7);
+      color: rgba(226, 232, 240, 0.88);
+      text-shadow: 0 4px 18px rgba(4, 8, 18, 0.8);
     }
+    /* Foreground sculpted data area-chart ridge that parts downward on scroll */
     .hero-plane--ridge {
-      bottom: -2px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
       z-index: 4;
       width: 100%;
+      pointer-events: none;
+      will-change: transform;
+    }
+    .hero-plane--ridge svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .hero-scroll-cue {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%);
+      z-index: 6;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.75);
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .scroll-mouse {
+      width: 22px;
+      height: 34px;
+      border-radius: 12px;
+      border: 1.6px solid rgba(226, 232, 240, 0.55);
+      display: flex;
+      justify-content: center;
+      padding-top: 6px;
+    }
+    .scroll-mouse i {
+      width: 3px;
+      height: 7px;
+      border-radius: 3px;
+      background: #38BDF8;
+      animation: wheelDrop 1.6s ease-in-out infinite;
+    }
+    @keyframes wheelDrop {
+      0% { transform: translateY(0); opacity: 1; }
+      75% { transform: translateY(10px); opacity: 0.2; }
+      100% { transform: translateY(0); opacity: 0; }
     }
     .hero-fade-bottom {
       position: absolute;
       left: 0; right: 0; bottom: 0;
-      height: 150px;
+      height: 140px;
       z-index: 5;
-      background: linear-gradient(180deg, rgba(6, 10, 19, 0) 0%, var(--dark-bg) 94%);
+      background: linear-gradient(180deg, rgba(6, 10, 19, 0) 0%, var(--dark-bg) 95%);
       pointer-events: none;
     }
 
@@ -458,14 +559,28 @@
     .tl-list::before {
       content: "";
       position: absolute;
+      z-index: 0;
       left: 21px;
       top: 24px;
       bottom: 24px;
-      width: 1.5px;
-      background: rgba(255, 255, 255, 0.12);
+      width: 2px;
+      background: rgba(255, 255, 255, 0.10);
+    }
+    .tl-list::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      left: 21px;
+      top: 24px;
+      width: 2px;
+      height: calc((100% - 48px) * var(--tl-fill, 0));
+      background: linear-gradient(180deg, #38BDF8 0%, #1D63ED 100%);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.65);
+      transition: height 0.12s linear;
     }
     .tl-item {
       position: relative;
+      z-index: 1;
       padding: 0 0 34px 64px;
       opacity: 0.46;
       transition: opacity 0.28s ease;
@@ -475,6 +590,7 @@
     .tl-item:hover { opacity: 1; }
     .tl-num {
       position: absolute;
+      z-index: 2;
       left: 0;
       top: 0;
       width: 44px;
@@ -642,10 +758,17 @@
       object-fit: cover;
       object-position: center top;
     }
-    .folder-sheet.s1 { transform: translateY(8px) rotate(-3deg); z-index: 1; }
-    .folder-sheet.s2 { left: 14%; right: 8%; top: 16%; transform: translateY(12px) rotate(3.5deg); z-index: 2; }
-    .glass-folder:hover .folder-sheet.s1 { transform: translateY(-22px) rotate(-5deg); }
-    .glass-folder:hover .folder-sheet.s2 { transform: translateY(-14px) rotate(5deg); }
+    .folder-sheet.s1 {
+      transform: translateY(calc(16px - var(--folder-peek, 0) * 26px)) rotate(calc(-1.5deg - var(--folder-peek, 0) * 2.5deg));
+      z-index: 1;
+    }
+    .folder-sheet.s2 {
+      left: 14%; right: 8%; top: 16%;
+      transform: translateY(calc(20px - var(--folder-peek, 0) * 18px)) rotate(calc(1.5deg + var(--folder-peek, 0) * 2.5deg));
+      z-index: 2;
+    }
+    .glass-folder:hover .folder-sheet.s1 { transform: translateY(-26px) rotate(-5.5deg); }
+    .glass-folder:hover .folder-sheet.s2 { transform: translateY(-16px) rotate(5.5deg); }
 
     .folder-pocket {
       position: absolute;
@@ -731,11 +854,14 @@
       font-size: clamp(54px, 13.8vw, 200px);
       font-weight: 800;
       line-height: 0.86;
-      letter-spacing: -0.045em;
+      letter-spacing: calc(0.03em - var(--bridge-p, 1) * 0.075em);
+      transform: translateY(calc((1 - var(--bridge-p, 1)) * 38px)) scale(calc(0.88 + var(--bridge-p, 1) * 0.12));
+      transform-origin: center bottom;
       text-transform: uppercase;
       color: #FFFFFF;
       text-shadow: 0 -6px 32px rgba(0, 0, 0, 0.35);
       user-select: none;
+      will-change: transform, letter-spacing;
     }
 
     /* =========================================================================
@@ -1220,6 +1346,7 @@
       color: var(--light-ink);
       transition: all 0.24s ease;
     }
+    .flow-step.lit .flow-icon,
     .flow-step:hover .flow-icon {
       background: var(--blue);
       border-color: var(--blue);
@@ -1330,13 +1457,26 @@
       object-fit: cover;
       border-radius: 12px;
     }
-    .fan-card:nth-child(1) { transform: rotate(-8deg) translateY(18px); }
-    .fan-card:nth-child(2) { transform: rotate(-3deg) translateY(4px); }
-    .fan-card:nth-child(3) { transform: rotate(3deg) translateY(4px); }
-    .fan-card:nth-child(4) { transform: rotate(8deg) translateY(18px); }
+    .fan-card:nth-child(1) { transform: translateX(calc((1 - var(--fan, 1)) * 180px)) rotate(calc(var(--fan, 1) * -9deg)) translateY(calc(var(--fan, 1) * 18px)); }
+    .fan-card:nth-child(2) { transform: translateX(calc((1 - var(--fan, 1)) * 60px)) rotate(calc(var(--fan, 1) * -3deg)) translateY(calc(var(--fan, 1) * 4px)); }
+    .fan-card:nth-child(3) { transform: translateX(calc((1 - var(--fan, 1)) * -60px)) rotate(calc(var(--fan, 1) * 3deg)) translateY(calc(var(--fan, 1) * 4px)); }
+    .fan-card:nth-child(4) { transform: translateX(calc((1 - var(--fan, 1)) * -180px)) rotate(calc(var(--fan, 1) * 9deg)) translateY(calc(var(--fan, 1) * 18px)); }
     .fan-card:hover {
       z-index: 10;
-      transform: rotate(0deg) translateY(-14px) scale(1.07);
+      transform: rotate(0deg) translateY(-16px) scale(1.07);
+    }
+
+    /* Rich unmistakable scroll reveal animations (works even when OS window-animations are off) */
+    [data-sc-in], [data-sc-stagger] > * {
+      opacity: 0;
+      transform: translate3d(0, 38px, 0) scale(0.965);
+      transition: opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1), transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .about-left[data-sc-in] { transform: translate3d(-44px, 16px, 0); }
+    .about-right[data-sc-in] { transform: translate3d(44px, 16px, 0); }
+    [data-sc-in].sc-in, [data-sc-stagger] > .sc-in {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
     }
 
     /* =========================================================================
@@ -1632,6 +1772,8 @@
 
     /* Responsive */
     @media (max-width: 1020px) {
+      .hud-chip, .hud-coord { display: none; }
+      .hero-track { height: 175svh; }
       .about-spread { grid-template-columns: 1fr; text-align: center; gap: 24px; }
       .about-meta-line, .about-actions, .focus-pills { justify-content: center; }
       .lanyard-stage { height: 500px; max-width: 360px; margin-inline: auto; }
@@ -1728,46 +1870,65 @@
          CHAPTER I: DARK TOPOGRAPHIC WORLD
          ===================================================================== -->
     <div class="dark-world" id="dark-world">
-      <!-- ACT 1: DIMENSIONAL NIGHT-HORIZON HERO -->
-      <section class="hero-scene" id="home" data-sc-act="flow">
-        <div class="hero-sky-glow" aria-hidden="true"></div>
+      <!-- ACT 1: PINNED "LIVING DATA HORIZON" SCROLLYTELLING HERO -->
+      <div class="hero-track" id="home">
+        <section class="hero-scene" aria-label="Pembuka Portofolio">
+          <canvas id="hero-data-canvas" aria-hidden="true"></canvas>
 
-        <!-- Distant Mountain Range Layer -->
-        <div class="hero-plane hero-plane--peaks" data-sc-parallax="-0.10" aria-hidden="true">
-          <svg viewBox="0 0 1440 460" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="peakGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#6488AC" stop-opacity="0.65"/>
-                <stop offset="45%" stop-color="#274160" stop-opacity="0.92"/>
-                <stop offset="100%" stop-color="#0B1526" stop-opacity="1"/>
-              </linearGradient>
-              <linearGradient id="snowSheen" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#E2E8F0" stop-opacity="0.55"/>
-                <stop offset="100%" stop-color="#6488AC" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <path d="M0 340 L180 250 L330 295 L540 135 L685 78 L835 125 L1030 235 L1215 190 L1440 285 L1440 460 L0 460 Z" fill="url(#peakGrad)"/>
-            <path d="M685 78 L742 138 L705 162 L668 128 L615 178 L540 135 Z" fill="url(#snowSheen)"/>
-            <path d="M835 125 L915 195 L860 212 L805 165 Z" fill="url(#snowSheen)"/>
-          </svg>
-        </div>
+          <div class="hero-hud" aria-hidden="true">
+            <span class="hud-coord hud-coord--left">OBS // SURABAYA · 7.25°S 112.75°E</span>
+            <span class="hud-coord hud-coord--right">UNESA · SAINS DATA · 2026</span>
 
-        <!-- Center Headline Between Planes -->
-        <div class="hero-title-wrap" data-sc-parallax="0.16">
-          <div class="hero-kicker"><span></span> S1 Sains Data · UNESA</div>
-          <h1 class="hero-display">WELCOME TO MY<br>PORTFOLIO</h1>
-          <p class="hero-sub">Data Analytics, Machine Learning &amp; Interactive Decision Systems oleh Bima Sena</p>
-        </div>
+            <div class="hud-chip hud-chip--1" data-hero-chip="-1.1 -0.6">
+              <span class="hud-chip-dot"></span>
+              <div><strong>19.049 Pairs</strong><span>Global Trade Gravity Score</span></div>
+            </div>
+            <div class="hud-chip hud-chip--2" data-hero-chip="1.1 -0.7">
+              <span class="hud-chip-dot emerald"></span>
+              <div><strong>AUC 0,9595</strong><span>Glaucoma Deep Learning</span></div>
+            </div>
+            <div class="hud-chip hud-chip--3" data-hero-chip="-0.9 0.5">
+              <span class="hud-chip-dot amber"></span>
+              <div><strong>96,67% Acc</strong><span>Computer Vision SVM</span></div>
+            </div>
+            <div class="hud-chip hud-chip--4" data-hero-chip="0.9 0.6">
+              <span class="hud-chip-dot"></span>
+              <div><strong>−17% Cost</strong><span>Gradient Boosting Stock</span></div>
+            </div>
+          </div>
 
-        <!-- Dark Foreground Silhouette Ridge -->
-        <div class="hero-plane hero-plane--ridge" data-sc-parallax="-0.03" aria-hidden="true">
-          <svg viewBox="0 0 1440 310" preserveAspectRatio="none">
-            <path d="M0 110 C120 85, 220 150, 355 182 C510 218, 635 195, 755 205 C895 216, 1035 168, 1175 135 C1285 108, 1375 78, 1440 92 L1440 310 L0 310 Z" fill="#08101E"/>
-            <path d="M0 165 C165 155, 310 225, 515 242 C720 258, 920 238, 1130 202 C1265 178, 1365 150, 1440 162 L1440 310 L0 310 Z" fill="#060A13"/>
-          </svg>
-        </div>
-        <div class="hero-fade-bottom" aria-hidden="true"></div>
-      </section>
+          <!-- Center Headline Rising Between Data Horizon & Foreground Area-Ridge -->
+          <div class="hero-title-wrap" id="hero-title-wrap">
+            <div class="hero-kicker"><span></span> S1 Sains Data · UNESA</div>
+            <h1 class="hero-display">WELCOME TO MY<br>PORTFOLIO</h1>
+            <p class="hero-sub">Data Analytics, Machine Learning &amp; Interactive Decision Systems oleh Bima Sena</p>
+          </div>
+
+          <!-- Sculpted Foreground Area-Chart / Topographic Ridge -->
+          <div class="hero-plane--ridge" id="hero-ridge" aria-hidden="true">
+            <svg viewBox="0 0 1440 300" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="ridgeTopStroke" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#1D63ED" stop-opacity="0"/>
+                  <stop offset="28%" stop-color="#38BDF8" stop-opacity="0.65"/>
+                  <stop offset="52%" stop-color="#60A5FA" stop-opacity="0.85"/>
+                  <stop offset="78%" stop-color="#34D399" stop-opacity="0.55"/>
+                  <stop offset="100%" stop-color="#1D63ED" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0 148 C135 92, 240 165, 390 194 C545 224, 650 176, 775 186 C920 198, 1055 128, 1205 98 C1305 78, 1385 112, 1440 126 L1440 300 L0 300 Z" fill="#071021"/>
+              <path d="M0 148 C135 92, 240 165, 390 194 C545 224, 650 176, 775 186 C920 198, 1055 128, 1205 98 C1305 78, 1385 112, 1440 126" fill="none" stroke="url(#ridgeTopStroke)" stroke-width="2"/>
+              <path d="M0 198 C185 178, 340 232, 540 246 C745 260, 945 232, 1155 194 C1285 170, 1375 156, 1440 168 L1440 300 L0 300 Z" fill="#060A13"/>
+            </svg>
+          </div>
+
+          <div class="hero-scroll-cue" id="hero-scroll-cue" aria-hidden="true">
+            <span class="scroll-mouse"><i></i></span>
+            <span>Scroll</span>
+          </div>
+          <div class="hero-fade-bottom" aria-hidden="true"></div>
+        </section>
+      </div>
 
       <!-- ACT 2: ABOUT ME + REDESIGNED HANGING LANYARD ID CARD -->
       <section class="about-section" id="about" data-sc-act="flow">
@@ -2913,7 +3074,7 @@
       if (!stage) return;
       const cv = document.getElementById('lanyard-canvas');
       const ctx = cv.getContext('2d');
-      const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const calm = false;
 
       const photo = new Image();
       let photoOk = false;
@@ -3378,6 +3539,13 @@
           if (visible) kick();
         }).observe(stage);
       }
+      window.__nudgeLanyard = function (impulse) {
+        if (pts.length && !drag && visible) {
+          pts[N - 1].px -= impulse * S;
+          kick();
+        }
+      };
+
       let rt;
       window.addEventListener('resize', () => {
         clearTimeout(rt);
@@ -3385,6 +3553,283 @@
       });
       init();
       kick();
+    })();
+  </script>
+
+  <!-- =======================================================================
+       LIVING DATA HORIZON CANVAS & SMOOTH SCROLL CHOREOGRAPHY ENGINE
+       ======================================================================= -->
+  <script>
+    (function () {
+      const clamp01 = v => v < 0 ? 0 : v > 1 ? 1 : v;
+      const easeOut = t => 1 - Math.pow(1 - clamp01(t), 3);
+
+      // 1. Living Data Horizon 3D Ridgeline & Signal Forecast Canvas
+      const heroTrack = document.getElementById('home');
+      const heroCanvas = document.getElementById('hero-data-canvas');
+      const hCtx = heroCanvas ? heroCanvas.getContext('2d') : null;
+      const heroTitle = document.getElementById('hero-title-wrap');
+      const heroRidge = document.getElementById('hero-ridge');
+      const heroCue = document.getElementById('hero-scroll-cue');
+      const hudChips = Array.from(document.querySelectorAll('[data-hero-chip]')).map(el => {
+        const [dx, dy] = el.getAttribute('data-hero-chip').split(/\s+/).map(Number);
+        return { el, dx: dx || 0, dy: dy || 0 };
+      });
+
+      let hW = 0, hH = 0, hDpr = 1, heroVisible = true;
+      function sizeHeroCanvas() {
+        if (!heroCanvas) return;
+        const r = heroCanvas.getBoundingClientRect();
+        hW = r.width; hH = r.height;
+        hDpr = Math.min(window.devicePixelRatio || 1, 2);
+        heroCanvas.width = Math.round(hW * hDpr);
+        heroCanvas.height = Math.round(hH * hDpr);
+      }
+      sizeHeroCanvas();
+      window.addEventListener('resize', sizeHeroCanvas);
+
+      if (heroCanvas && 'IntersectionObserver' in window) {
+        new IntersectionObserver(entries => {
+          heroVisible = entries[0].isIntersecting;
+        }, { threshold: 0 }).observe(heroTrack);
+      }
+
+      // 6 layered ridgeline signal waves (back-to-front)
+      const waves = [
+        { yBase: 0.42, amp: 24, freq: 0.0042, speed: 0.42, color: 'rgba(56, 189, 248, 0.28)', fill: 'rgba(14, 38, 78, 0.22)', nodes: false },
+        { yBase: 0.49, amp: 32, freq: 0.0051, speed: -0.35, color: 'rgba(96, 165, 250, 0.36)', fill: 'rgba(17, 45, 92, 0.28)', nodes: false },
+        { yBase: 0.56, amp: 38, freq: 0.0046, speed: 0.55, color: 'rgba(52, 211, 153, 0.44)', fill: 'rgba(12, 46, 68, 0.32)', nodes: true },
+        { yBase: 0.63, amp: 44, freq: 0.0058, speed: 0.68, color: 'rgba(56, 189, 248, 0.68)', fill: 'rgba(15, 36, 74, 0.45)', nodes: true },
+        { yBase: 0.71, amp: 36, freq: 0.0064, speed: -0.48, color: 'rgba(29, 99, 237, 0.78)', fill: 'rgba(9, 22, 48, 0.62)', nodes: true }
+      ];
+
+      function drawDataHorizon(timeSec, scrollP) {
+        if (!hCtx || !hW || !heroVisible) return;
+        hCtx.setTransform(hDpr, 0, 0, hDpr, 0, 0);
+        hCtx.clearRect(0, 0, hW, hH);
+
+        // Subtle perspective telemetry grid in upper observatory sky
+        hCtx.strokeStyle = 'rgba(148, 197, 255, 0.045)';
+        hCtx.lineWidth = 1;
+        const gridStep = Math.max(64, Math.round(hW / 16));
+        const shiftX = (scrollP * 90) % gridStep;
+        for (let x = -gridStep + shiftX; x < hW + gridStep; x += gridStep) {
+          hCtx.beginPath();
+          hCtx.moveTo(x, 0);
+          hCtx.lineTo(x + (x - hW * 0.5) * 0.35, hH * 0.85);
+          hCtx.stroke();
+        }
+        for (let row = 1; row <= 5; row++) {
+          const gy = hH * (0.16 + row * 0.11) - scrollP * row * 14;
+          hCtx.beginPath();
+          hCtx.moveTo(0, gy);
+          hCtx.lineTo(hW, gy);
+          hCtx.stroke();
+        }
+
+        // Ambient scatter plot / star-telemetry points
+        for (let i = 0; i < 28; i++) {
+          const sx = ((i * 197 + 43) % 1000) / 1000 * hW;
+          const sy = (((i * 311 + 71) % 1000) / 1000 * hH * 0.55) - scrollP * (18 + (i % 4) * 14);
+          const pulse = 0.35 + 0.45 * Math.sin(timeSec * 1.8 + i);
+          hCtx.fillStyle = i % 3 === 0 ? `rgba(56,189,248,${pulse * 0.65})` : `rgba(226,232,240,${pulse * 0.45})`;
+          hCtx.beginPath();
+          hCtx.arc(sx, (sy + hH) % (hH * 0.65), i % 4 === 0 ? 2.1 : 1.3, 0, Math.PI * 2);
+          hCtx.fill();
+        }
+
+        // Layered ridgeline time-series waves
+        const stepX = 18;
+        waves.forEach((w, idx) => {
+          const parallaxY = -scrollP * (28 + idx * 24);
+          const ampScale = 1 + scrollP * 0.45;
+          const baseY = hH * w.yBase + parallaxY;
+          const phase = timeSec * w.speed + scrollP * (2.2 + idx * 0.55) + idx * 1.7;
+
+          const ptsY = [];
+          hCtx.beginPath();
+          for (let x = 0; x <= hW + stepX; x += stepX) {
+            const env = 0.55 + 0.45 * Math.sin((x / hW) * Math.PI);
+            const y = baseY +
+              (Math.sin(x * w.freq + phase) * w.amp +
+               Math.cos(x * w.freq * 2.1 - phase * 0.7) * (w.amp * 0.42)) * env * ampScale;
+            ptsY.push({ x, y });
+            if (x === 0) hCtx.moveTo(x, y);
+            else hCtx.lineTo(x, y);
+          }
+
+          // Area fill to bottom
+          hCtx.lineTo(hW + stepX, hH + 20);
+          hCtx.lineTo(0, hH + 20);
+          hCtx.closePath();
+          hCtx.fillStyle = w.fill;
+          hCtx.fill();
+
+          // Glowing spline stroke
+          hCtx.beginPath();
+          ptsY.forEach((pt, i) => {
+            if (i === 0) hCtx.moveTo(pt.x, pt.y);
+            else hCtx.lineTo(pt.x, pt.y);
+          });
+          hCtx.strokeStyle = w.color;
+          hCtx.lineWidth = idx >= 3 ? 2.2 : 1.5;
+          hCtx.stroke();
+
+          // Live glowing data anomalies / forecast markers along foreground curves
+          if (w.nodes) {
+            for (let k = 2; k < ptsY.length - 2; k += 9) {
+              const p = ptsY[k];
+              hCtx.fillStyle = idx === 2 ? '#34D399' : '#38BDF8';
+              hCtx.beginPath();
+              hCtx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+              hCtx.fill();
+              hCtx.strokeStyle = 'rgba(56, 189, 248, 0.25)';
+              hCtx.lineWidth = 1;
+              hCtx.beginPath();
+              hCtx.arc(p.x, p.y, 7, 0, Math.PI * 2);
+              hCtx.stroke();
+            }
+          }
+        });
+      }
+
+      // 2. Smooth Lerp Scroll Choreography Across Entire Page
+      const tlLists = Array.from(document.querySelectorAll('.tl-list'));
+      const tlItems = Array.from(document.querySelectorAll('.tl-item'));
+      let userHoveredTl = false;
+      tlItems.forEach(item => {
+        item.addEventListener('mouseenter', () => { userHoveredTl = true; });
+        item.addEventListener('mouseleave', () => { userHoveredTl = false; });
+      });
+
+      const foldersSec = document.querySelector('.folders-section');
+      const folderEls = Array.from(document.querySelectorAll('.glass-folder'));
+      const bridgeEl = document.querySelector('.portfolio-bridge');
+      const bridgeWord = document.querySelector('.portfolio-bridge-word');
+      const workflowEl = document.querySelector('.workflow-card');
+      const flowSteps = Array.from(document.querySelectorAll('.flow-step'));
+      const fanGallery = document.querySelector('.fan-gallery');
+      const aboutSec = document.getElementById('about');
+
+      let smoothY = window.scrollY;
+      let lastRawY = window.scrollY;
+      let workflowTriggered = false;
+
+      window.addEventListener('scroll', () => {
+        const rawY = window.scrollY;
+        const dy = rawY - lastRawY;
+        lastRawY = rawY;
+        if (aboutSec && window.__nudgeLanyard) {
+          const ar = aboutSec.getBoundingClientRect();
+          if (ar.top < window.innerHeight && ar.bottom > 0) {
+            const impulse = Math.max(-3.2, Math.min(3.2, dy * 0.055));
+            if (Math.abs(impulse) > 0.08) window.__nudgeLanyard(impulse);
+          }
+        }
+      }, { passive: true });
+
+      function tickChoreography(nowMs) {
+        const targetY = window.scrollY;
+        smoothY += (targetY - smoothY) * 0.14;
+        if (Math.abs(targetY - smoothY) < 0.15) smoothY = targetY;
+
+        const vh = window.innerHeight || 1;
+        const timeSec = nowMs * 0.001;
+
+        // A. Hero Pinned Scrollytelling Scrub
+        let heroP = 0;
+        if (heroTrack) {
+          const trackH = Math.max(1, heroTrack.offsetHeight - vh);
+          const top = heroTrack.offsetTop;
+          heroP = clamp01((smoothY - top) / trackH);
+
+          if (heroTitle) {
+            // Headline rises from behind foreground ridge & scales up cleanly, then fades near exit
+            const rise = (1 - easeOut(Math.min(1, heroP / 0.68))) * 68 - heroP * 26;
+            const sc = 0.90 + easeOut(Math.min(1, heroP / 0.72)) * 0.14;
+            const fadeOut = heroP > 0.78 ? 1 - clamp01((heroP - 0.78) / 0.22) : 1;
+            heroTitle.style.transform = `translate3d(0, ${rise.toFixed(1)}px, 0) scale(${sc.toFixed(3)})`;
+            heroTitle.style.opacity = fadeOut.toFixed(3);
+          }
+
+          if (heroRidge) {
+            // Foreground sculpted data ridge parts downward as you scroll
+            const drop = heroP * 135;
+            heroRidge.style.transform = `translate3d(0, ${drop.toFixed(1)}px, 0) scaleY(${(1 - heroP * 0.18).toFixed(3)})`;
+          }
+
+          hudChips.forEach(c => {
+            const tx = c.dx * heroP * 120;
+            const ty = c.dy * heroP * 95 - heroP * 35;
+            const op = 1 - clamp01((heroP - 0.55) / 0.38);
+            c.el.style.transform = `translate3d(${tx.toFixed(1)}px, ${ty.toFixed(1)}px, 0)`;
+            c.el.style.opacity = op.toFixed(3);
+          });
+
+          if (heroCue) {
+            heroCue.style.opacity = heroP > 0.06 ? '0' : '1';
+          }
+        }
+        drawDataHorizon(timeSec, heroP);
+
+        // B. Timeline Glowing Beam & Auto-Lighting Milestones
+        tlLists.forEach(list => {
+          const r = list.getBoundingClientRect();
+          const fill = clamp01((vh * 0.68 - r.top) / Math.max(1, r.height));
+          list.style.setProperty('--tl-fill', fill.toFixed(3));
+
+          if (!userHoveredTl) {
+            const rows = Array.from(list.querySelectorAll('.tl-item'));
+            let activeIdx = 0;
+            rows.forEach((row, i) => {
+              const rr = row.getBoundingClientRect();
+              if (rr.top <= vh * 0.65) activeIdx = i;
+            });
+            rows.forEach((row, i) => row.classList.toggle('active', i <= activeIdx));
+          }
+        });
+
+        // C. Smoked-Glass Folders Sheet Peek Driven by Scroll
+        if (foldersSec) {
+          const fr = foldersSec.getBoundingClientRect();
+          const peek = clamp01((vh * 0.88 - fr.top) / (vh * 0.55));
+          folderEls.forEach((f, idx) => {
+            const delayed = clamp01(peek * 1.15 - idx * 0.12);
+            f.style.setProperty('--folder-peek', easeOut(delayed).toFixed(3));
+          });
+        }
+
+        // D. Giant PORTOFOLIO Wordmark Bridge Kinetic Scrub
+        if (bridgeEl && bridgeWord) {
+          const br = bridgeEl.getBoundingClientRect();
+          const bp = easeOut(clamp01((vh * 0.95 - br.top) / (vh * 0.62)));
+          bridgeWord.style.setProperty('--bridge-p', bp.toFixed(3));
+        }
+
+        // E. Sequential 6-Step Workflow Pulse & Fan Gallery Spread
+        if (workflowEl && !workflowTriggered) {
+          const wr = workflowEl.getBoundingClientRect();
+          if (wr.top < vh * 0.78) {
+            workflowTriggered = true;
+            flowSteps.forEach((step, idx) => {
+              setTimeout(() => {
+                step.classList.add('lit');
+                setTimeout(() => step.classList.remove('lit'), 950);
+              }, idx * 180);
+            });
+          }
+        }
+
+        if (fanGallery) {
+          const gr = fanGallery.getBoundingClientRect();
+          const fp = easeOut(clamp01((vh * 0.92 - gr.top) / (vh * 0.52)));
+          fanGallery.style.setProperty('--fan', fp.toFixed(3));
+        }
+
+        requestAnimationFrame(tickChoreography);
+      }
+
+      requestAnimationFrame(tickChoreography);
     })();
   </script>
 </body>
