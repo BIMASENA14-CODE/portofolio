@@ -1370,6 +1370,7 @@
       border: 1px solid var(--light-line);
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
     }
+    .skill-box-wide { grid-column: 1 / -1; }
     .skill-box h3 {
       display: flex;
       align-items: center;
@@ -2113,13 +2114,13 @@
       <section class="folders-section" aria-label="Ringkasan Portofolio">
         <div class="container">
           <div class="folder-grid" data-sc-in data-sc-stagger="90">
-            <button class="glass-folder" type="button" data-jump-tab="projects" aria-label="9 Proyek, buka bagian proyek">
+            <button class="glass-folder" type="button" data-jump-tab="projects" aria-label="10 Proyek, buka bagian proyek">
               <svg class="folder-back-svg" viewBox="0 0 480 340" preserveAspectRatio="none" aria-hidden="true"><path d="M18 58C18 44 28 36 42 36H188C206 36 218 28 230 16C240 8 250 4 266 4H438C452 4 462 14 462 28V312C462 326 452 334 438 334H42C28 334 18 326 18 312Z"/></svg>
               <span class="folder-sheet s1"><img src="assets/export-finder.webp" alt="" loading="lazy"></span>
               <span class="folder-sheet s2"><img src="assets/this-me/hero.webp" alt="" loading="lazy"></span>
               <span class="folder-pocket">
                 <span class="folder-info">
-                  <strong data-sc-count="0 9" data-sc-count-ms="900">9</strong>
+                  <strong data-sc-count="0 10" data-sc-count-ms="900">10</strong>
                   <span>Proyek Data &amp; ML</span>
                 </span>
                 <span class="folder-dots" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -2172,7 +2173,7 @@
             <div class="seg-tabs" role="tablist" aria-label="Kategori utama portofolio">
               <button class="seg-tab" type="button" role="tab" id="tab-btn-projects" aria-selected="true" aria-controls="panel-projects" data-tab="projects">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
-                Proyek (9)
+                Proyek (10)
               </button>
               <button class="seg-tab" type="button" role="tab" id="tab-btn-dashboards" aria-selected="false" aria-controls="panel-projects" data-tab="dashboards">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4M7 12l3-3 3 2 4-4"/></svg>
@@ -2234,6 +2235,22 @@
                   <p class="project-summary">Memperkirakan penjualan 5 minggu ke depan per kategori dan per barang, lalu menghitung stok pengaman agar risiko kehabisan hanya 5% beserta rencana pembelian siap unduh.</p>
                   <div class="project-metric"><strong>17% lebih hemat biaya</strong><span>Permintaan terpenuhi 94% dibanding 86% aturan umum.</span></div>
                   <div class="tech-list"><span class="tech">Streamlit</span><span class="tech">Gradient Boosting</span><span class="tech">EOQ</span><span class="tech">Python</span></div>
+                </div>
+              </article>
+
+              <!-- 2b. Supply Chain DataCo -->
+              <article class="project-card" data-category="supplychain">
+                <div class="project-art">
+                  <img src="assets/dataco-dashboard.webp" alt="Dashboard Supply Chain Performance DataCo" loading="lazy" width="1500" height="771">
+                  <span class="card-pill">Supply Chain &amp; BI</span>
+                  <span class="card-badge">DASHBOARD + EXCEL</span>
+                </div>
+                <div class="project-body">
+                  <div class="project-meta"><span class="project-date">November 2026</span><span>180.519 Transaksi</span></div>
+                  <h3>Analisis Supply Chain DataCo Global</h3>
+                  <p class="project-summary">Analisis end-to-end rantai pasok 2015–2018 dengan kerangka SCOR: scorecard KPI, matriks ABC-XYZ, EOQ dan safety stock, workbook Excel 9 sheet, serta dashboard interaktif dengan fitur Tanya Data.</p>
+                  <div class="project-metric"><strong>OTIF aktif 42,7% vs SLA 90%</strong><span>Keterlambatan 57,3% berakar pada desain SLA ekspedisi, bukan wilayah.</span></div>
+                  <div class="tech-list"><span class="tech">Excel</span><span class="tech">SCOR</span><span class="tech">ABC-XYZ</span><span class="tech">EOQ</span><span class="tech">HTML Dashboard</span></div>
                 </div>
               </article>
 
@@ -2502,6 +2519,13 @@
                 <span class="skill-pill">IndoBERT</span>
               </div>
             </article>
+            <article class="skill-box skill-box-wide">
+              <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Soft Skill</h3>
+              <div class="skill-pills">
+                <span class="skill-pill primary">Problem Solving</span>
+                <span class="skill-pill primary">Communication</span>
+              </div>
+            </article>
           </div>
 
           <div class="tool-strip" data-sc-in data-sc-stagger="45">
@@ -2604,7 +2628,7 @@
 
                 <div class="collab-stats">
                   <div class="collab-stat"><strong>3,61</strong><span>IPK S1 Sains Data UNESA</span></div>
-                  <div class="collab-stat"><strong>9 Proyek</strong><span>ML, CV, NLP, Graph &amp; BI</span></div>
+                  <div class="collab-stat"><strong>10 Proyek</strong><span>ML, CV, NLP, Graph &amp; BI</span></div>
                 </div>
               </div>
             </div>
@@ -2656,6 +2680,7 @@
       <div class="dialog-actions">
         <a class="btn btn-blue" id="dialog-repo" href="https://github.com/BIMASENA14-CODE" target="_blank" rel="noopener noreferrer">Kode di GitHub ↗</a>
         <a class="btn btn-outline-light" id="dialog-demo" href="#" target="_blank" rel="noopener noreferrer" hidden>Buka Dashboard Live ↗</a>
+        <a class="btn btn-outline-light" id="dialog-sheet" href="#" target="_blank" rel="noopener noreferrer" hidden>Versi Excel ↗</a>
         <span class="dialog-hint" id="dialog-hint"></span>
       </div>
     </div>
@@ -2764,7 +2789,7 @@
             const cat = card.dataset.category;
             const catMatch = activeFilter === 'all' ||
               cat === activeFilter ||
-              (activeFilter === 'dashboard' && cat === 'stok') ||
+              (activeFilter === 'dashboard' && (cat === 'stok' || cat === 'supplychain')) ||
               (activeFilter === 'vision' && cat === 'glaukoma');
             const textMatch = !query || card.textContent.toLocaleLowerCase('id').includes(query);
             show = catMatch && textMatch;
@@ -2832,6 +2857,18 @@
           resultTitle: '17% lebih murah dari aturan umum',
           resultText: 'Pada simulasi 15 minggu, kebijakan kuantil Gradient Boosting 17% lebih hemat biaya dibanding stok 8 minggu dengan service fill rate 94% vs 86%.',
           limit: 'Asumsi biaya simpan dan lead time 4 minggu disimulasikan karena absennya data pemasok asli.'
+        },
+        supplychain: {
+          category: 'Supply Chain Analytics · Business Intelligence · Excel',
+          repo: 'https://github.com/BIMASENA14-CODE/supply-chain-analytics-dataco',
+          demo: null,
+          sheet: 'https://docs.google.com/spreadsheets/d/1SweaS4ccxJlgVd6y99ZbuRoWFNrcDzeJd4cYEfCZ0wU/edit?usp=sharing',
+          media: [{ src: 'assets/dataco-dashboard.webp', alt: 'Dashboard Supply Chain Performance DataCo', caption: 'Halaman Overview dashboard DataCo (index.html di repositori)' }],
+          data: 'DataCo Smart Supply Chain: 180.519 baris transaksi (Jan 2015 – Jan 2018) dan 469.977 log akses katalog web, mencakup 5 market, 164 negara tujuan, dan 118 SKU.',
+          approach: 'Preservasi data mentah, pembersihan master data, scorecard KPI berbasis SCOR, matriks ABC-XYZ, perhitungan EOQ, safety stock, dan ROP di workbook Excel 9 sheet. Hasilnya dirangkum dalam dashboard HTML interaktif dengan filter tahun dan market, simulator supply plan, serta Tanya Data.',
+          resultTitle: 'OTIF aktif 42,7% dibanding target SLA 90%',
+          resultText: 'Keterlambatan 57,3% seragam di semua benua karena janji SLA tidak realistis: First Class terlambat 100%, Second Class sama lambatnya dengan Standard. Laba bersih $3,97 juta (margin 12%) terpotong 49,5% oleh transaksi merugi.',
+          limit: 'Biaya pemesanan dan penyimpanan untuk EOQ merupakan asumsi karena data pemasok tidak tersedia. Dataset mentah berukuran besar tidak disertakan di repositori.'
         },
         uiux: {
           category: 'UI/UX Design · Aplikasi Mobile Inklusif',
@@ -2940,6 +2977,15 @@
           repoA.textContent = 'GitHub ↗';
           actions.appendChild(repoA);
         }
+        if (info && info.sheet) {
+          const sheetA = document.createElement('a');
+          sheetA.className = 'card-btn-ghost';
+          sheetA.href = info.sheet;
+          sheetA.target = '_blank';
+          sheetA.rel = 'noopener noreferrer';
+          sheetA.textContent = 'Versi Excel ↗';
+          actions.appendChild(sheetA);
+        }
         card.querySelector('.project-body').appendChild(actions);
       });
 
@@ -2988,6 +3034,10 @@
         const demoLink = document.getElementById('dialog-demo');
         demoLink.hidden = !d.demo;
         if (d.demo) demoLink.href = d.demo;
+
+        const sheetLink = document.getElementById('dialog-sheet');
+        sheetLink.hidden = !d.sheet;
+        if (d.sheet) sheetLink.href = d.sheet;
 
         const repoLink = document.getElementById('dialog-repo');
         const repoHint = document.getElementById('dialog-hint');
